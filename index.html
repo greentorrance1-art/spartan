@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>60-Day Fighter Transformation System</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
+
+:root {
+–black: #0a0a0a;
+–carbon: #111111;
+–iron: #1a1a1a;
+–steel: #2a2a2a;
+–ash: #444;
+–smoke: #888;
+–chalk: #ccc;
+–white: #f4f4f0;
+–crimson: #c0392b;
+–blood: #8b0000;
+–gold: #c9a84c;
+–forest: #2d5a27;
+–acid: #a8ff3e;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–black);
+color: var(–white);
+font-family: ‘IBM Plex Sans’, sans-serif;
+font-size: 14px;
+line-height: 1.6;
+overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+position: relative;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+padding: 60px 20px;
+background: var(–black);
+overflow: hidden;
+}
+
+.hero::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background:
+repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(192,57,43,0.06) 40px),
+repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(192,57,43,0.04) 40px);
+}
+
+.hero-number {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(180px, 30vw, 320px);
+color: rgba(192,57,43,0.08);
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+letter-spacing: -10px;
+pointer-events: none;
+user-select: none;
+}
+
+.hero-tag {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–crimson);
+margin-bottom: 24px;
+position: relative;
+}
+
+.hero h1 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(52px, 9vw, 110px);
+letter-spacing: 4px;
+line-height: 0.95;
+position: relative;
+text-transform: uppercase;
+}
+
+.hero h1 span { color: var(–crimson); }
+
+.hero-sub {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 12px;
+color: var(–smoke);
+margin-top: 28px;
+letter-spacing: 2px;
+position: relative;
+max-width: 500px;
+}
+
+.hero-divider {
+width: 60px;
+height: 2px;
+background: var(–crimson);
+margin: 32px auto;
+position: relative;
+}
+
+.architects {
+display: flex;
+gap: 32px;
+flex-wrap: wrap;
+justify-content: center;
+position: relative;
+margin-top: 8px;
+}
+
+.architect {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 10px;
+color: var(–ash);
+text-transform: uppercase;
+letter-spacing: 2px;
+}
+
+.architect strong {
+display: block;
+color: var(–gold);
+font-size: 11px;
+}
+
+/* ── NAV ── */
+nav {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(10,10,10,0.95);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid var(–steel);
+padding: 0 20px;
+overflow-x: auto;
+white-space: nowrap;
+}
+
+nav ul {
+display: inline-flex;
+list-style: none;
+gap: 0;
+min-width: 100%;
+}
+
+nav a {
+display: block;
+padding: 16px 18px;
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 10px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–ash);
+text-decoration: none;
+border-bottom: 2px solid transparent;
+transition: all 0.2s;
+}
+
+nav a:hover { color: var(–white); border-bottom-color: var(–crimson); }
+
+/* ── SECTIONS ── */
+section {
+max-width: 1100px;
+margin: 0 auto;
+padding: 80px 24px;
+border-bottom: 1px solid var(–steel);
+}
+
+.section-label {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 10px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–crimson);
+margin-bottom: 16px;
+}
+
+h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(36px, 5vw, 64px);
+letter-spacing: 2px;
+line-height: 1;
+margin-bottom: 40px;
+color: var(–white);
+}
+
+h3 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 26px;
+letter-spacing: 1px;
+color: var(–white);
+margin-bottom: 12px;
+}
+
+h4 {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 8px;
+}
+
+p { color: var(–chalk); margin-bottom: 12px; line-height: 1.7; }
+
+/* ── PHASE BLOCKS ── */
+.phase-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 2px;
+margin-bottom: 48px;
+}
+
+.phase-card {
+background: var(–iron);
+padding: 32px 28px;
+position: relative;
+overflow: hidden;
+}
+
+.phase-card::before {
+content: attr(data-num);
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 120px;
+color: rgba(255,255,255,0.03);
+position: absolute;
+bottom: -20px;
+right: 10px;
+line-height: 1;
+pointer-events: none;
+}
+
+.phase-card.crimson { border-top: 3px solid var(–crimson); }
+.phase-card.gold { border-top: 3px solid var(–gold); }
+.phase-card.acid { border-top: 3px solid var(–acid); }
+
+.phase-label {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 9px;
+letter-spacing: 3px;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.phase-card.crimson .phase-label { color: var(–crimson); }
+.phase-card.gold .phase-label { color: var(–gold); }
+.phase-card.acid .phase-label { color: var(–acid); }
+
+.phase-days {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 42px;
+line-height: 1;
+margin-bottom: 16px;
+}
+
+.phase-focus {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–smoke);
+margin-bottom: 20px;
+letter-spacing: 1px;
+}
+
+/* ── SCHEDULE BLOCKS ── */
+.schedule-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 2px;
+}
+
+.day-type {
+background: var(–iron);
+padding: 28px;
+}
+
+.day-type-header {
+display: flex;
+align-items: center;
+gap: 12px;
+margin-bottom: 24px;
+padding-bottom: 16px;
+border-bottom: 1px solid var(–steel);
+}
+
+.day-dot {
+width: 10px;
+height: 10px;
+border-radius: 50%;
+flex-shrink: 0;
+}
+
+.dot-early { background: var(–acid); }
+.dot-late { background: var(–gold); }
+.dot-off { background: var(–crimson); }
+
+.day-type-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 20px;
+letter-spacing: 1px;
+}
+
+.time-block {
+display: flex;
+gap: 16px;
+margin-bottom: 16px;
+align-items: flex-start;
+}
+
+.time-stamp {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–crimson);
+min-width: 90px;
+padding-top: 1px;
+letter-spacing: 1px;
+}
+
+.time-content {
+flex: 1;
+}
+
+.time-title {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 12px;
+font-weight: 600;
+color: var(–white);
+margin-bottom: 3px;
+}
+
+.time-detail {
+font-size: 12px;
+color: var(–smoke);
+line-height: 1.5;
+}
+
+/* ── TABLES ── */
+.data-table {
+width: 100%;
+border-collapse: collapse;
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 12px;
+margin-bottom: 32px;
+}
+
+.data-table th {
+background: var(–crimson);
+color: var(–white);
+padding: 10px 14px;
+text-align: left;
+font-size: 10px;
+letter-spacing: 2px;
+text-transform: uppercase;
+font-weight: 600;
+}
+
+.data-table td {
+padding: 10px 14px;
+border-bottom: 1px solid var(–steel);
+color: var(–chalk);
+vertical-align: top;
+}
+
+.data-table tr:nth-child(even) td { background: var(–iron); }
+.data-table tr:hover td { background: var(–steel); }
+
+.data-table td:first-child {
+color: var(–gold);
+font-weight: 600;
+white-space: nowrap;
+}
+
+/* ── BENCHMARK BLOCKS ── */
+.benchmark-row {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 2px;
+margin-bottom: 32px;
+}
+
+.benchmark-card {
+background: var(–iron);
+padding: 24px 20px;
+border-left: 3px solid var(–crimson);
+}
+
+.benchmark-day {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 36px;
+color: var(–crimson);
+line-height: 1;
+margin-bottom: 8px;
+}
+
+.benchmark-item {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–smoke);
+margin-bottom: 4px;
+}
+
+.benchmark-item strong { color: var(–white); }
+
+/* ── NUTRITION ── */
+.meal-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 2px;
+}
+
+.meal-card {
+background: var(–iron);
+padding: 24px 20px;
+}
+
+.meal-time {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 10px;
+color: var(–gold);
+letter-spacing: 2px;
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+
+.meal-name {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.meal-items {
+list-style: none;
+}
+
+.meal-items li {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–smoke);
+padding: 4px 0;
+border-bottom: 1px solid var(–steel);
+}
+
+.meal-items li:last-child { border-bottom: none; }
+
+.macro-bar {
+display: flex;
+gap: 12px;
+margin-top: 10px;
+}
+
+.macro {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 10px;
+color: var(–smoke);
+}
+
+.macro span { color: var(–acid); font-weight: 600; }
+
+/* ── MENTAL ── */
+.protocol-list {
+list-style: none;
+counter-reset: protocol;
+}
+
+.protocol-list li {
+counter-increment: protocol;
+display: flex;
+gap: 20px;
+padding: 20px 0;
+border-bottom: 1px solid var(–steel);
+align-items: flex-start;
+}
+
+.protocol-list li::before {
+content: counter(protocol, decimal-leading-zero);
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 28px;
+color: var(–crimson);
+line-height: 1;
+min-width: 36px;
+}
+
+.protocol-text { flex: 1; }
+
+.protocol-title {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 12px;
+font-weight: 600;
+color: var(–white);
+margin-bottom: 4px;
+letter-spacing: 1px;
+}
+
+.protocol-body {
+font-size: 13px;
+color: var(–smoke);
+line-height: 1.6;
+}
+
+/* ── RECOVERY ── */
+.recovery-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 2px;
+}
+
+.recovery-card {
+background: var(–iron);
+padding: 24px;
+}
+
+.recovery-icon {
+font-size: 28px;
+margin-bottom: 12px;
+}
+
+/* ── FOOTER ── */
+footer {
+background: var(–carbon);
+padding: 60px 24px;
+text-align: center;
+border-top: 1px solid var(–steel);
+}
+
+.footer-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 48px;
+letter-spacing: 4px;
+color: var(–crimson);
+margin-bottom: 12px;
+}
+
+.footer-sub {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–ash);
+letter-spacing: 2px;
+}
+
+/* ── TAGS ── */
+.tag {
+display: inline-block;
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 10px;
+letter-spacing: 1px;
+padding: 4px 10px;
+border: 1px solid;
+margin: 3px 3px 3px 0;
+text-transform: uppercase;
+}
+
+.tag-crimson { border-color: var(–crimson); color: var(–crimson); }
+.tag-gold { border-color: var(–gold); color: var(–gold); }
+.tag-acid { border-color: var(–acid); color: var(–acid); }
+.tag-smoke { border-color: var(–ash); color: var(–smoke); }
+
+/* ── CALLOUT ── */
+.callout {
+border-left: 3px solid var(–crimson);
+background: var(–iron);
+padding: 20px 24px;
+margin: 24px 0;
+}
+
+.callout.gold { border-left-color: var(–gold); }
+.callout.acid { border-left-color: var(–acid); }
+
+.callout p { margin: 0; color: var(–chalk); font-size: 13px; }
+
+/* ── SKILL BLOCK ── */
+.skill-block {
+background: var(–iron);
+padding: 28px;
+margin-bottom: 2px;
+}
+
+.skill-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 16px;
+flex-wrap: wrap;
+gap: 12px;
+}
+
+.skill-rounds {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–crimson);
+border: 1px solid var(–crimson);
+padding: 4px 12px;
+}
+
+.drill-list {
+list-style: none;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 8px;
+}
+
+.drill-list li {
+font-family: ‘IBM Plex Mono’, monospace;
+font-size: 11px;
+color: var(–smoke);
+padding: 8px 12px;
+background: var(–steel);
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.drill-list li::before {
+content: ‘▸’;
+color: var(–crimson);
+font-size: 10px;
+}
+
+/* ── RUNNING PROG ── */
+.run-timeline {
+position: relative;
+padding-left: 24px;
+}
+
+.run-timeline::before {
+content: ‘’;
+position: absolute;
+left: 0;
+top: 8px;
+bottom: 8px;
+width: 2px;
+background: linear-gradient(to bottom, var(–crimson), var(–gold), var(–acid));
+}
+
+.run-entry {
+position: relative;
+padding: 16px 0 16px 24px;
+border-bottom: 1px solid var(–steel);
+}
+
+.run-entry::before {
+content: ‘’;
+position: absolute;
+left: -5px;
+top: 22px;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: var(–crimson);
+border: 2px solid var(–black);
+}
+
+.run-phase { font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; color: var(–crimson); letter-spacing: 2px; text-transform: uppercase; }
+.run-desc { font-family: ‘IBM Plex Mono’, monospace; font-size: 12px; color: var(–white); margin: 4px 0; font-weight: 600; }
+.run-detail { font-size: 12px; color: var(–smoke); }
+
+/* scroll fade-in */
+.fade-up {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-up.visible {
+opacity: 1;
+transform: translateY(0);
+}
+</style>
+
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+
+<div class="hero">
+  <div class="hero-number">60</div>
+  <div class="hero-tag">Green Lion Studio · Fighter Development Program</div>
+  <h1>60-Day<br><span>Fighter</span><br>System</h1>
+  <div class="hero-sub">5'7 · 130 LB · FULL COMMITMENT · AMATEUR TO PRO PIPELINE</div>
+  <div class="hero-divider"></div>
+  <div class="architects">
+    <div class="architect"><strong>Floyd Mayweather Jr.</strong>Defense & Discipline</div>
+    <div class="architect"><strong>Bruce Lee</strong>Speed & Adaptability</div>
+    <div class="architect"><strong>Buakaw Banchamek</strong>Conditioning & Toughness</div>
+    <div class="architect"><strong>Manson Gibson</strong>Creativity & Unpredictability</div>
+  </div>
+</div>
+
+<!-- ══════════ NAV ══════════ -->
+
+<nav>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#schedule">Daily Schedule</a></li>
+    <li><a href="#phases">60-Day Phases</a></li>
+    <li><a href="#running">Running</a></li>
+    <li><a href="#skills">Skill Training</a></li>
+    <li><a href="#strength">Strength</a></li>
+    <li><a href="#nutrition">Nutrition</a></li>
+    <li><a href="#mental">Mental</a></li>
+    <li><a href="#recovery">Recovery</a></li>
+    <li><a href="#benchmarks">Benchmarks</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ OVERVIEW ══════════ -->
+
+<section id="overview">
+  <div class="section-label">System Overview</div>
+  <h2>The Blueprint</h2>
+
+  <div class="callout">
+    <p><strong>Schedule Pattern (from your screenshots):</strong> Thu/Fri = consistent OFF days. Work days split: Early-end shifts (~6pm) on most weekdays. Late-end shifts (~8pm) on Tue/Wed. Weekends = 9:45am–7pm. System is built around this exact pattern.</p>
+  </div>
+
+  <div class="phase-grid fade-up">
+    <div class="phase-card crimson" data-num="1">
+      <div class="phase-label">Phase 1 · Days 1–20</div>
+      <div class="phase-days">FOUNDATION</div>
+      <div class="phase-focus">Build the engine. Condition the body. Install the habits. Zero sparring.</div>
+      <div>
+        <span class="tag tag-crimson">Roadwork</span>
+        <span class="tag tag-crimson">Shadowboxing</span>
+        <span class="tag tag-crimson">Bag Work</span>
+        <span class="tag tag-crimson">Footwork</span>
+      </div>
+    </div>
+    <div class="phase-card gold" data-num="2">
+      <div class="phase-label">Phase 2 · Days 21–40</div>
+      <div class="phase-days">SKILL + SPARRING</div>
+      <div class="phase-focus">Technical sharpening. Light sparring introduction. Increase volume and intensity.</div>
+      <div>
+        <span class="tag tag-gold">Mitts</span>
+        <span class="tag tag-gold">Sparring</span>
+        <span class="tag tag-gold">Combinations</span>
+        <span class="tag tag-gold">Defense</span>
+      </div>
+    </div>
+    <div class="phase-card acid" data-num="3">
+      <div class="phase-label">Phase 3 · Days 41–60</div>
+      <div class="phase-days">FIGHT PREP</div>
+      <div class="phase-focus">Simulate fight conditions. Full sparring. Peak conditioning. Game plan development.</div>
+      <div>
+        <span class="tag tag-acid">Full Sparring</span>
+        <span class="tag tag-acid">Fight Simulation</span>
+        <span class="tag tag-acid">IQ</span>
+        <span class="tag tag-acid">Peak Load</span>
+      </div>
+    </div>
+  </div>
+
+  <table class="data-table fade-up">
+    <thead>
+      <tr><th>Attribute</th><th>Day 1</th><th>Day 60 Target</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Mile Run</td><td>Baseline</td><td>Sub 7:30</td></tr>
+      <tr><td>Jump Rope Continuous</td><td>3 min</td><td>12 min</td></tr>
+      <tr><td>Shadowboxing Form</td><td>Unstructured</td><td>Clean 3-punch combos, slips, pivots</td></tr>
+      <tr><td>Bag Rounds (3 min)</td><td>3 rounds</td><td>8 rounds maintained output</td></tr>
+      <tr><td>Sparring Comfort</td><td>None</td><td>Controlled, composed light/med sparring</td></tr>
+      <tr><td>Push-Up Capacity</td><td>Baseline</td><td>+40% from baseline</td></tr>
+      <tr><td>Body Weight</td><td>130 lb</td><td>130–133 lb lean</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════ DAILY SCHEDULE ══════════ -->
+
+<section id="schedule">
+  <div class="section-label">Daily Structure</div>
+  <h2>Three Templates</h2>
+
+  <p style="color:var(--smoke); margin-bottom:32px;">Every training day maps to one of three templates. No deviation. Adjust intensity, not structure.</p>
+
+  <div class="schedule-grid fade-up">
+
+```
+<!-- EARLY END DAY -->
+<div class="day-type">
+  <div class="day-type-header">
+    <div class="day-dot dot-early"></div>
+    <div>
+      <div class="day-type-title">Early-End Day</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Shift ends ~6pm · Sun/Mon/Tue/Sat variants</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">5:00 AM</div>
+    <div class="time-content">
+      <div class="time-title">WAKE + ACTIVATE</div>
+      <div class="time-detail">Water (500ml). No phone. Clothes already laid out the night before.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">5:15 AM</div>
+    <div class="time-content">
+      <div class="time-title">MORNING ROADWORK</div>
+      <div class="time-detail">Running progression (see running section). 30–45 min total. Return. Cold water splash face.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">6:00 AM</div>
+    <div class="time-content">
+      <div class="time-title">SKILL WORK (AT HOME)</div>
+      <div class="time-detail">20 min shadowboxing. Mirror or recorded. Phase-specific focus. No sloppy reps.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">6:25 AM</div>
+    <div class="time-content">
+      <div class="time-title">SHOWER + PACK</div>
+      <div class="time-detail">Prep all meals. Gym bag packed. Out the door within 30 min.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">WORK</div>
+    <div class="time-content">
+      <div class="time-title">~9:45 AM – 6:00 PM</div>
+      <div class="time-detail">Stay hydrated. Eat on schedule. Visualize combinations during downtime.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">7:00 PM</div>
+    <div class="time-content">
+      <div class="time-title">GYM SESSION</div>
+      <div class="time-detail">60–75 min. Bag work, mitts (if coach/partner), pad work. Phase-specific focus. Full output.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">8:30 PM</div>
+    <div class="time-content">
+      <div class="time-title">POST-GYM MEAL</div>
+      <div class="time-detail">Protein + carbs within 45 min. See nutrition section.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">9:30 PM</div>
+    <div class="time-content">
+      <div class="time-title">WIND DOWN</div>
+      <div class="time-detail">Stretch 15 min. Review what you worked on. Lay out tomorrow's clothes. In bed by 10pm.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LATE END DAY -->
+<div class="day-type">
+  <div class="day-type-header">
+    <div class="day-dot dot-late"></div>
+    <div>
+      <div class="day-type-title">Late-End Day</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Shift ends ~8pm · Tue/Wed variants</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">5:30 AM</div>
+    <div class="time-content">
+      <div class="time-title">WAKE + ACTIVATE</div>
+      <div class="time-detail">Water (500ml). Slower start. Still no phone for first 10 min.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">5:45 AM</div>
+    <div class="time-content">
+      <div class="time-title">FULL MORNING BLOCK</div>
+      <div class="time-detail">This is your primary training window. Run + shadowboxing + 15 min bag work if possible. 60–75 min total.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">7:00 AM</div>
+    <div class="time-content">
+      <div class="time-title">SHOWER + FUEL</div>
+      <div class="time-detail">Full breakfast. Pack all meals. Relaxed pace before late shift.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">WORK</div>
+    <div class="time-content">
+      <div class="time-title">~11:45 AM – 8:00 PM</div>
+      <div class="time-detail">Eat every 3–4 hours. Hydrate. Mental visualizations between customers.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">8:30 PM</div>
+    <div class="time-content">
+      <div class="time-title">RETURN + DECOMPRESS</div>
+      <div class="time-detail">Do NOT skip movement. 20 min minimum: shadowboxing or light bag, 3 rounds. This is non-negotiable discipline.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">9:00 PM</div>
+    <div class="time-content">
+      <div class="time-title">POST MEAL + STRETCH</div>
+      <div class="time-detail">Protein meal. 15 min full body stretch. No screens after 9:30.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">10:15 PM</div>
+    <div class="time-content">
+      <div class="time-title">SLEEP</div>
+      <div class="time-detail">This is your absolute latest. Late days get less sleep — protect every minute.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OFF DAY -->
+<div class="day-type">
+  <div class="day-type-header">
+    <div class="day-dot dot-off"></div>
+    <div>
+      <div class="day-type-title">Off Day (Thu/Fri)</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Full volume · Primary development days</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">6:00 AM</div>
+    <div class="time-content">
+      <div class="time-title">WAKE</div>
+      <div class="time-detail">Same time every day. Discipline doesn't know days off.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">6:15 AM</div>
+    <div class="time-content">
+      <div class="time-title">ROADWORK BLOCK</div>
+      <div class="time-detail">Extended run (phase-specific). 40–60 min. Sprints, hills, or long steady state based on phase.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">7:30 AM</div>
+    <div class="time-content">
+      <div class="time-title">BREAKFAST + REST</div>
+      <div class="time-detail">Full meal. 90 min recovery before afternoon session.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">10:00 AM</div>
+    <div class="time-content">
+      <div class="time-title">GYM SESSION 1</div>
+      <div class="time-detail">Technical skill work: shadowboxing, bag, mitts, footwork drills. 90 min. Zero rush.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">12:00 PM</div>
+    <div class="time-content">
+      <div class="time-title">LUNCH + RECOVERY</div>
+      <div class="time-detail">Full meal. 2 hr gap before S&C.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">2:30 PM</div>
+    <div class="time-content">
+      <div class="time-title">STRENGTH & CONDITIONING</div>
+      <div class="time-detail">45–60 min. Bodyweight or gym. Phase-specific program (see S&C section).</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">4:00 PM</div>
+    <div class="time-content">
+      <div class="time-title">SPARRING / DRILLING</div>
+      <div class="time-detail">Phase 2+: light to full sparring. Phase 1: heavy bag rounds, partner drilling only.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">5:30 PM</div>
+    <div class="time-content">
+      <div class="time-title">RECOVERY BLOCK</div>
+      <div class="time-detail">Ice bath / contrast shower. Full stretch. Foam roll. Dinner.</div>
+    </div>
+  </div>
+
+  <div class="time-block">
+    <div class="time-stamp">9:30 PM</div>
+    <div class="time-content">
+      <div class="time-title">SLEEP</div>
+      <div class="time-detail">Off days you push hard. Sleep is where you adapt. Non-negotiable 8 hours.</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ══════════ PHASES ══════════ -->
+
+<section id="phases">
+  <div class="section-label">60-Day System</div>
+  <h2>Phase Breakdown</h2>
+
+  <!-- PHASE 1 -->
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Phase 1 · Foundation</h3>
+      <span class="skill-rounds" style="border-color:var(--crimson);color:var(--crimson);">Days 1–20</span>
+    </div>
+    <div class="callout">
+      <p><strong>Objective:</strong> Build aerobic base. Install fundamental movement patterns. Establish the daily discipline loop. No ego. No sparring. Build the engine before you race it.</p>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Block</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday (OFF)</th><th>Friday (OFF)</th><th>Saturday</th><th>Sunday</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Morning</td>
+          <td>3-mile easy run</td>
+          <td>3-mile easy run</td>
+          <td>Interval run (see running)</td>
+          <td>4-mile easy run</td>
+          <td>REST or walk 30 min</td>
+          <td>3-mile easy run</td>
+          <td>Long run 4-5 miles</td>
+        </tr>
+        <tr>
+          <td>Shadowbox</td>
+          <td>20 min AM</td>
+          <td>20 min AM</td>
+          <td>20 min AM</td>
+          <td>30 min technical</td>
+          <td>30 min technical</td>
+          <td>20 min AM</td>
+          <td>20 min AM</td>
+        </tr>
+        <tr>
+          <td>Evening</td>
+          <td>Bag 5x3 min</td>
+          <td>20 min post-8pm shadow</td>
+          <td>20 min post-8pm shadow</td>
+          <td>Bag 8x3 min + footwork</td>
+          <td>S&C Block A</td>
+          <td>Bag 5x3 min</td>
+          <td>Bag 5x3 min</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td>Jab mechanics</td>
+          <td>Jab + cross</td>
+          <td>Footwork only</td>
+          <td>1-2-3 combo</td>
+          <td>Defense: slip/roll</td>
+          <td>All of week 1</td>
+          <td>Rhythm + angles</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <span class="tag tag-crimson">No sparring</span>
+      <span class="tag tag-crimson">Master the jab</span>
+      <span class="tag tag-crimson">Run every morning</span>
+      <span class="tag tag-crimson">Form over speed</span>
+      <span class="tag tag-smoke">Jump rope 10 min daily</span>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Phase 2 · Skill + Sparring Introduction</h3>
+      <span class="skill-rounds" style="border-color:var(--gold);color:var(--gold);">Days 21–40</span>
+    </div>
+    <div class="callout gold">
+      <p><strong>Objective:</strong> Introduce controlled sparring (light contact). Add combination depth. Increase bag volume. Running goes into interval territory. Your body is now conditioned — push skill acquisition.</p>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Block</th><th>Work Day Early</th><th>Work Day Late</th><th>Off Day (Thu)</th><th>Off Day (Fri)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Morning Run</td>
+          <td>3-4 miles + 4 sprints</td>
+          <td>4 miles + 6 sprints</td>
+          <td>5-mile run + hills</td>
+          <td>Easy 3 miles or REST</td>
+        </tr>
+        <tr>
+          <td>Shadowbox AM</td>
+          <td>20 min (combos + defense)</td>
+          <td>25 min (full rounds with counters)</td>
+          <td>30 min technical</td>
+          <td>20 min flow</td>
+        </tr>
+        <tr>
+          <td>Evening</td>
+          <td>Bag 7x3 min + mitts if available</td>
+          <td>20 min shadow post-8pm</td>
+          <td>Light sparring 4x3 min + bag</td>
+          <td>S&C Block B + bag</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td>Counter punching</td>
+          <td>Head movement while punching</td>
+          <td>Sparring: establish distance</td>
+          <td>Angles off the jab</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <span class="tag tag-gold">Sparring starts Day 21</span>
+      <span class="tag tag-gold">Light to medium contact only</span>
+      <span class="tag tag-gold">Headgear + mouthpiece always</span>
+      <span class="tag tag-gold">Combinations of 3–5 punches</span>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Phase 3 · Fight Preparation</h3>
+      <span class="skill-rounds" style="border-color:var(--acid);color:var(--acid);">Days 41–60</span>
+    </div>
+    <div class="callout acid">
+      <p><strong>Objective:</strong> Simulate fight conditions. Full rounds of sparring on off days. Maintain conditioning, sharpen game plan. Your body can handle it now — test it under pressure.</p>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Block</th><th>Work Day Early</th><th>Work Day Late</th><th>Off Day (Thu)</th><th>Off Day (Fri)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Morning Run</td>
+          <td>4 miles + 6 sprint sets</td>
+          <td>5 miles + hills</td>
+          <td>6-mile run (fight pace intervals)</td>
+          <td>3-mile shakeout</td>
+        </tr>
+        <tr>
+          <td>Shadowbox AM</td>
+          <td>25 min (game plan specific)</td>
+          <td>30 min (defensive focus)</td>
+          <td>30 min fight simulation</td>
+          <td>20 min flow + rhythm</td>
+        </tr>
+        <tr>
+          <td>Evening</td>
+          <td>Bag 8x3 min + combinations</td>
+          <td>3 rounds shadow + stretch</td>
+          <td>Full sparring 6x3 min</td>
+          <td>S&C Peak Block + bag 5x3</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td>Signature combinations</td>
+          <td>Defense under fatigue</td>
+          <td>Full fight simulation</td>
+          <td>Explosive output + recovery</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <span class="tag tag-acid">Full sparring on off days</span>
+      <span class="tag tag-acid">Game plan development</span>
+      <span class="tag tag-acid">Peak conditioning</span>
+      <span class="tag tag-acid">Fight-specific combos</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RUNNING ══════════ -->
+
+<section id="running">
+  <div class="section-label">Cardio Engine</div>
+  <h2>Running Progression</h2>
+
+  <p style="color:var(--smoke);margin-bottom:32px;">Roadwork is non-negotiable. Every session. Mayweather ran 5 miles before anyone else woke up. You run before work. Every day. The base is built on consistent volume, not heroics.</p>
+
+  <div class="run-timeline fade-up">
+    <div class="run-entry">
+      <div class="run-phase">Days 1–7 · Base Establishment</div>
+      <div class="run-desc">3 Miles Easy · No Sprint Work</div>
+      <div class="run-detail">Conversational pace. If you can't speak in full sentences, slow down. Goal: consistency over 7 days straight. Track pace. Note your baseline mile time.</div>
+    </div>
+    <div class="run-entry">
+      <div class="run-phase">Days 8–14 · Volume Addition</div>
+      <div class="run-desc">3.5–4 Miles · Add 4 × 100m Strides</div>
+      <div class="run-detail">Still easy base pace for main run. After completion: 4 × 100m at 80% effort, walk back recovery. This teaches your legs fight-pace movement.</div>
+    </div>
+    <div class="run-entry">
+      <div class="run-phase">Days 15–20 · Interval Introduction</div>
+      <div class="run-desc">2-Mile Warmup + 6 × 200m Intervals</div>
+      <div class="run-detail">Intervals at 90% effort. 90-second rest between. Cool down 1 mile. This is where your conditioning starts separating from the average person.</div>
+    </div>
+    <div class="run-entry">
+      <div class="run-phase">Days 21–30 · Fight Pace</div>
+      <div class="run-desc">4 Miles Base + 8 × 200m · Off Days: 5 Miles</div>
+      <div class="run-detail">Add a hill day once per week (off day). Push the intervals harder. Time your mile. Target: under 8:30 by Day 30.</div>
+    </div>
+    <div class="run-entry">
+      <div class="run-phase">Days 31–40 · Volume Peak</div>
+      <div class="run-desc">4–5 Miles Base + Sprint Pyramids</div>
+      <div class="run-detail">Sprint pyramid: 100m / 200m / 300m / 200m / 100m with 60-sec rest. Off days: 6-mile long run with surges every mile. You're building a gas tank now.</div>
+    </div>
+    <div class="run-entry">
+      <div class="run-phase">Days 41–55 · Fight Simulation Cardio</div>
+      <div class="run-desc">3-Minute Effort Intervals · Mimic Round Structure</div>
+      <div class="run-detail">Run 3 min hard (85–90%) / 1 min walk. Repeat 8–10x. This mirrors a boxing round. Your cardiovascular system learns to recover in the corner.</div>
+    </div>
+    <div class="run-entry">
+      <div class="run-phase">Days 56–60 · Taper + Sharpness</div>
+      <div class="run-desc">3 Miles Easy + 4 Strides</div>
+      <div class="run-detail">Pull back volume. Maintain sharpness. You're not building here — you're staying fresh for sparring and fight readiness assessment.</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:32px;">
+    <p><strong>Jump Rope Protocol:</strong> Add 10 min jump rope daily (before bag work). Progress from basic bounce → alternating feet → double-unders by Day 30. Jump rope is your warm-up AND your conditioning tool. Non-negotiable.</p>
+  </div>
+</section>
+
+<!-- ══════════ SKILLS ══════════ -->
+
+<section id="skills">
+  <div class="section-label">Technical Development</div>
+  <h2>Skill Training</h2>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Shadowboxing Protocol</h3>
+      <span class="skill-rounds">DAILY · 20–30 MIN</span>
+    </div>
+    <p style="color:var(--smoke);margin-bottom:20px;">Every round has a specific focus. Never shadow box without intention. Each round = 3 minutes, 1 minute rest.</p>
+    <table class="data-table">
+      <thead><tr><th>Round</th><th>Phase 1 Focus</th><th>Phase 2 Focus</th><th>Phase 3 Focus</th></tr></thead>
+      <tbody>
+        <tr><td>Round 1</td><td>Jab mechanics + footwork</td><td>Jab + cross + pivot</td><td>Game plan combo A</td></tr>
+        <tr><td>Round 2</td><td>Double jab + move</td><td>Counter to imaginary jab</td><td>Defense: slip + counter</td></tr>
+        <tr><td>Round 3</td><td>Footwork circles, no punches</td><td>Body shots + head movement</td><td>Inside work + clinch exits</td></tr>
+        <tr><td>Round 4</td><td>Full speed jab only</td><td>3-5 punch combos + move</td><td>Full simulation round</td></tr>
+        <tr><td>Round 5+</td><td>Free work (apply all above)</td><td>Defense only round</td><td>Imaginary opponent game plan</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Heavy Bag Protocol</h3>
+      <span class="skill-rounds">5–8 ROUNDS · 3 MIN</span>
+    </div>
+    <ul class="drill-list">
+      <li>Round 1: Jab only — every angle, every distance</li>
+      <li>Round 2: 1-2 (jab-cross) + move after every exchange</li>
+      <li>Round 3: Body shots only — dig left hook to body, right to body</li>
+      <li>Round 4: Combos of 3 ending with movement</li>
+      <li>Round 5: Defense-first round — slip, slip, counter</li>
+      <li>Round 6: Power round — max output for 90 sec, cruise 90 sec</li>
+      <li>Round 7: Footwork round — punch, pivot, punch, angle</li>
+      <li>Round 8 (Phase 3): Full output — simulate a fight round</li>
+    </ul>
+  </div>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Technical Foundation Sequence</h3>
+      <span class="skill-rounds">INSTALL IN ORDER</span>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Week</th><th>Primary Skill</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Week 1–2</td><td>Stance + Jab</td><td>Everything is built on this. No shortcuts.</td></tr>
+        <tr><td>Week 3</td><td>Cross + 1-2 combination</td><td>Your power punch. Must be mechanically clean.</td></tr>
+        <tr><td>Week 4</td><td>Hook (lead)</td><td>Short range weapon. Critical for inside fighting.</td></tr>
+        <tr><td>Week 5</td><td>Slipping punches</td><td>Mayweather's gift. Defense makes you hard to hit.</td></tr>
+        <tr><td>Week 6</td><td>Footwork: pivot + angle</td><td>Bruce Lee: position before technique.</td></tr>
+        <tr><td>Week 7</td><td>Combination linking (3–5 punch)</td><td>Chain your tools. Unpredictability (Gibson).</td></tr>
+        <tr><td>Week 8</td><td>Fight IQ: distance, timing, counters</td><td>The difference between a fighter and a brawler.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Sparring Progression</h3>
+      <span class="skill-rounds">PHASE 2+ ONLY</span>
+    </div>
+    <div class="callout gold">
+      <p><strong>Rule:</strong> You are NOT trying to win sparring. You are trying to learn. Every round has a specific task. The fighter who gets the most out of sparring wins — not the fighter who swings hardest.</p>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Day Range</th><th>Sparring Type</th><th>Round Structure</th><th>Your Objective</th></tr></thead>
+      <tbody>
+        <tr><td>Days 21–25</td><td>Touch sparring only</td><td>3x3 min · No power</td><td>Establish distance. Don't get hit. Just move.</td></tr>
+        <tr><td>Days 26–30</td><td>Light contact</td><td>4x3 min · 40% power</td><td>Land the jab. Slip one punch. That's it.</td></tr>
+        <tr><td>Days 31–35</td><td>Light-medium</td><td>5x3 min · 50-60% power</td><td>Use angles. Counter after defense.</td></tr>
+        <tr><td>Days 36–40</td><td>Medium</td><td>6x3 min · 60-70% power</td><td>Game plan rounds. Specific combos only.</td></tr>
+        <tr><td>Days 41–50</td><td>Medium-hard</td><td>6x3 min · 70-80%</td><td>Pressure test everything. Stay composed.</td></tr>
+        <tr><td>Days 51–60</td><td>Fight simulation</td><td>8x3 min · 80-90%</td><td>Full rounds. Performance under real pressure.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ STRENGTH ══════════ -->
+
+<section id="strength">
+  <div class="section-label">Physical Development</div>
+  <h2>Strength & Conditioning</h2>
+
+  <p style="color:var(--smoke);margin-bottom:32px;">At 130 lb you do not need to bulk. You need functional strength, explosive power, and fight-specific conditioning. No powerlifting. All training serves the fight.</p>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Block A · Foundation Strength</h3>
+      <span class="skill-rounds">Days 1–20 · Off Days</span>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Push-Up Variations</td><td>4 × max</td><td>60 sec</td><td>Standard → diamond → wide → decline progression</td></tr>
+        <tr><td>Pull-Ups / Inverted Rows</td><td>4 × max</td><td>90 sec</td><td>Control the eccentric. No kipping.</td></tr>
+        <tr><td>Dips</td><td>3 × 12</td><td>60 sec</td><td>Full lockout. Tricep and chest engagement.</td></tr>
+        <tr><td>Single-Leg Squat (assisted)</td><td>3 × 8 each</td><td>60 sec</td><td>Fighter's legs. No wobble.</td></tr>
+        <tr><td>Plank to Push-Up</td><td>3 × 30 sec</td><td>45 sec</td><td>Core stability under movement.</td></tr>
+        <tr><td>Medicine Ball Slam</td><td>4 × 10</td><td>45 sec</td><td>Full body explosive power. Substitute: burpees.</td></tr>
+        <tr><td>Neck Exercises</td><td>Daily · 3 × 15</td><td>—</td><td>Front, back, side. Protect your chin.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Block B · Power Development</h3>
+      <span class="skill-rounds">Days 21–40 · Off Days</span>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Exercise</th><th>Sets × Reps</th><th>Rest</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Explosive Push-Up</td><td>4 × 8</td><td>90 sec</td><td>Leave the ground. Clap if possible. Speed is strength.</td></tr>
+        <tr><td>Pull-Up + L-Hold</td><td>4 × 6</td><td>90 sec</td><td>Strength-endurance combination.</td></tr>
+        <tr><td>Box Jump</td><td>4 × 8</td><td>90 sec</td><td>Soft landing. Maximum height effort.</td></tr>
+        <tr><td>Single-Leg Squat (full)</td><td>3 × 10 each</td><td>60 sec</td><td>No assistance. Pistol squat.</td></tr>
+        <tr><td>Turkish Get-Up</td><td>3 × 5 each side</td><td>60 sec</td><td>Full-body control. Fight athleticism.</td></tr>
+        <tr><td>Hollow Body + Superman</td><td>3 × 30 sec each</td><td>45 sec</td><td>Core power transfer.</td></tr>
+        <tr><td>Rotational Slam / Band Work</td><td>4 × 12 each side</td><td>45 sec</td><td>Punching power originates in rotation.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="skill-block fade-up">
+    <div class="skill-header">
+      <h3>Block C · Peak Fight Conditioning</h3>
+      <span class="skill-rounds">Days 41–60 · Off Days</span>
+    </div>
+    <table class="data-table">
+      <thead><tr><th>Exercise</th><th>Protocol</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Burpee-to-Jump</td><td>5 × 10 · 45 sec rest</td><td>Simulate being knocked down and exploding back up.</td></tr>
+        <tr><td>Max Push-Up Rounds</td><td>3 min on / 1 min rest × 4</td><td>Mirrors fight rounds. Maintain form under fatigue.</td></tr>
+        <tr><td>Squat Jump Intervals</td><td>20 sec on / 10 sec off × 8</td><td>Tabata protocol. Buakaw conditioning base.</td></tr>
+        <tr><td>Pull-Up Max × 5 sets</td><td>90 sec rest</td><td>Test your strength ceiling every 2 weeks.</td></tr>
+        <tr><td>Sprint + Drop + Push-Up</td><td>10 × 20m</td><td>Drop at end of each sprint. Explosive start back up.</td></tr>
+        <tr><td>Plank Variations</td><td>4 × 45 sec each</td><td>Side plank, RKC plank, plank reaches.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ NUTRITION ══════════ -->
+
+<section id="nutrition">
+  <div class="section-label">Fuel System</div>
+  <h2>Nutrition Plan</h2>
+
+  <div class="callout" style="margin-bottom:32px;">
+    <p><strong>Targets:</strong> 2,400–2,600 calories/day on training days · 2,000–2,200 on rest days · Minimum 160g protein daily · 1 gallon water on training days · 3 liters minimum on rest days. At 130 lb actively training twice per day, undereating kills your adaptation.</p>
+  </div>
+
+  <div class="meal-grid fade-up">
+    <div class="meal-card">
+      <div class="meal-time">4:45–5:00 AM · Pre-Run</div>
+      <div class="meal-name">Wake Fuel</div>
+      <ul class="meal-items">
+        <li>1 banana</li>
+        <li>1 tbsp peanut butter</li>
+        <li>Coffee (optional, black)</li>
+        <li>16oz water immediately</li>
+      </ul>
+      <div class="macro-bar">
+        <div class="macro">Cal: <span>200</span></div>
+        <div class="macro">Pro: <span>5g</span></div>
+        <div class="macro">Carb: <span>35g</span></div>
+      </div>
+    </div>
+
+```
+<div class="meal-card">
+  <div class="meal-time">7:00–7:30 AM · Post-Run</div>
+  <div class="meal-name">Recovery Breakfast</div>
+  <ul class="meal-items">
+    <li>4 eggs scrambled + 2 egg whites</li>
+    <li>1 cup oatmeal + honey</li>
+    <li>1 cup fruit (berries or banana)</li>
+    <li>16oz water</li>
+  </ul>
+  <div class="macro-bar">
+    <div class="macro">Cal: <span>620</span></div>
+    <div class="macro">Pro: <span>38g</span></div>
+    <div class="macro">Carb: <span>70g</span></div>
+  </div>
+</div>
+
+<div class="meal-card">
+  <div class="meal-time">11:00–11:30 AM · Meal 2 (Packed)</div>
+  <div class="meal-name">Work Meal A</div>
+  <ul class="meal-items">
+    <li>6oz grilled chicken or canned tuna</li>
+    <li>1 cup rice or quinoa</li>
+    <li>1 cup vegetables (pre-roasted)</li>
+    <li>Olive oil or avocado</li>
+  </ul>
+  <div class="macro-bar">
+    <div class="macro">Cal: <span>550</span></div>
+    <div class="macro">Pro: <span>45g</span></div>
+    <div class="macro">Carb: <span>55g</span></div>
+  </div>
+</div>
+
+<div class="meal-card">
+  <div class="meal-time">2:30–3:00 PM · Meal 3 (Packed)</div>
+  <div class="meal-name">Work Meal B</div>
+  <ul class="meal-items">
+    <li>Greek yogurt (full fat, plain) + honey</li>
+    <li>Handful almonds or mixed nuts</li>
+    <li>Apple or orange</li>
+    <li>Hard boiled eggs x2</li>
+  </ul>
+  <div class="macro-bar">
+    <div class="macro">Cal: <span>420</span></div>
+    <div class="macro">Pro: <span>28g</span></div>
+    <div class="macro">Carb: <span>38g</span></div>
+  </div>
+</div>
+
+<div class="meal-card">
+  <div class="meal-time">Pre-Evening Session</div>
+  <div class="meal-name">Pre-Gym (60 min before)</div>
+  <ul class="meal-items">
+    <li>1 banana + 1 scoop protein powder</li>
+    <li>OR: rice cake + peanut butter x2</li>
+    <li>16oz water</li>
+  </ul>
+  <div class="macro-bar">
+    <div class="macro">Cal: <span>280</span></div>
+    <div class="macro">Pro: <span>25g</span></div>
+    <div class="macro">Carb: <span>38g</span></div>
+  </div>
+</div>
+
+<div class="meal-card">
+  <div class="meal-time">8:00–9:00 PM · Post-Session</div>
+  <div class="meal-name">Recovery Dinner</div>
+  <ul class="meal-items">
+    <li>8oz salmon, chicken thighs, or beef</li>
+    <li>1.5 cups sweet potato or rice</li>
+    <li>Large salad or cooked greens</li>
+    <li>Full glass water</li>
+  </ul>
+  <div class="macro-bar">
+    <div class="macro">Cal: <span>680</span></div>
+    <div class="macro">Pro: <span>52g</span></div>
+    <div class="macro">Carb: <span>72g</span></div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="callout gold" style="margin-top:24px;">
+    <p><strong>Meal Prep Protocol:</strong> Sunday and Wednesday are prep days. Cook rice, proteins, and vegetables in bulk. Portion into containers. You should never be figuring out what to eat on a training day. Decision fatigue costs energy you need for the gym.</p>
+  </div>
+
+  <h3 style="margin-top:40px;margin-bottom:16px;">Hydration Protocol</h3>
+  <table class="data-table fade-up">
+    <thead><tr><th>Time</th><th>Target</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Wake up</td><td>500ml immediately</td><td>Rehydrate from overnight</td></tr>
+      <tr><td>During run</td><td>250ml every 20 min</td><td>Performance maintenance</td></tr>
+      <tr><td>Post-run</td><td>500ml within 30 min</td><td>Recovery initiation</td></tr>
+      <tr><td>During work</td><td>250ml per hour</td><td>Sustained hydration</td></tr>
+      <tr><td>Pre-gym</td><td>500ml 60 min before</td><td>Session readiness</td></tr>
+      <tr><td>During gym</td><td>Sip between rounds</td><td>Don't chug — sip</td></tr>
+      <tr><td>Post-gym</td><td>500ml within 20 min</td><td>Immediate recovery</td></tr>
+      <tr><td>Before bed</td><td>250ml</td><td>Overnight recovery support</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ══════════ MENTAL ══════════ -->
+
+<section id="mental">
+  <div class="section-label">Psychological System</div>
+  <h2>Mental Conditioning</h2>
+
+  <ol class="protocol-list fade-up">
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">THE NIGHT-BEFORE LOCK</div>
+        <div class="protocol-body">Every night: lay out running clothes, fill water bottle, set alarm. No decisions at 5am. Decisions are made at 9pm. The morning version of you is weaker — remove his choices. Clothes out. Shoes by the door. Alarm set. Done.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">ZERO NEGOTIATION RULE</div>
+        <div class="protocol-body">When the alarm goes off, your feet hit the floor in under 5 seconds. No bargaining. No "5 more minutes." That voice is the enemy. The moment you negotiate with it, it wins. Alarm sounds — feet down. That's the whole system.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">WORK SHIFT VISUALIZATION</div>
+        <div class="protocol-body">During downtime at work: 2-minute visualization sessions. See yourself throwing your jab. See yourself slipping a punch. See a specific combination landing clean. Your nervous system doesn't distinguish between vivid imagination and physical practice. Use this.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">FATIGUE REFRAME PROTOCOL</div>
+        <div class="protocol-body">After 8pm shifts you will not want to train. This feeling is the training. Every time you train when you don't want to, you're building the mental architecture of a fighter who performs under duress. Tired in round 8 of a fight? You've trained for this exact moment.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">DAILY REVIEW (5 MINUTES)</div>
+        <div class="protocol-body">Before sleep: What did you do today? What was the specific skill focus? Did you execute it? What do you work on tomorrow? No journaling required — just answer those 3 questions. Your progress is tracked in your body, not in a notebook.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">COLD EXPOSURE AS DISCIPLINE DRILL</div>
+        <div class="protocol-body">End every shower with 60 seconds cold water. Non-negotiable. This is not about the physical benefits — it's a daily reps of choosing discomfort. The same mental muscle you use to stay in the cold water is the one you use to train on exhausted days.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">PHONE LOCKOUT WINDOW</div>
+        <div class="protocol-body">No phone first 30 minutes after waking. No phone 30 minutes before bed. These are protected blocks. Social media and the news are stimulation that costs you energy and focus you need for the gym. Protect your attention like it's a physical resource — because it is.</div>
+      </div>
+    </li>
+    <li>
+      <div class="protocol-text">
+        <div class="protocol-title">THE FIGHTER'S IDENTITY SHIFT</div>
+        <div class="protocol-body">Stop thinking "I'm a guy who works out." Start thinking "I'm a fighter who works a job." That identity shift changes every small decision. A fighter doesn't skip roadwork. A fighter doesn't eat garbage. A fighter doesn't negotiate with the alarm clock. Become the identity, and the behaviors follow automatically.</div>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ══════════ RECOVERY ══════════ -->
+
+<section id="recovery">
+  <div class="section-label">Adaptation System</div>
+  <h2>Recovery Protocols</h2>
+
+  <div class="recovery-grid fade-up">
+    <div class="recovery-card">
+      <div class="recovery-icon">💤</div>
+      <h4>Sleep Optimization</h4>
+      <p style="color:var(--smoke);font-size:13px;">Target: 7.5 hours minimum on work days. 8–9 hours on off days. Sleep is when your body adapts to training. There is no supplement that replaces it.</p>
+      <ul class="meal-items" style="margin-top:12px;">
+        <li>Room: 65–68°F (cool)</li>
+        <li>Total darkness or sleep mask</li>
+        <li>No screens 30 min before bed</li>
+        <li>Consistent bedtime ±30 min</li>
+        <li>Magnesium glycinate 400mg nightly</li>
+      </ul>
+    </div>
+
+```
+<div class="recovery-card">
+  <div class="recovery-icon">🧊</div>
+  <h4>Contrast Therapy</h4>
+  <p style="color:var(--smoke);font-size:13px;">Post off-day sessions. 3 minutes hot shower → 60 seconds cold. Repeat x3. Drives blood circulation and accelerates muscle recovery.</p>
+  <ul class="meal-items" style="margin-top:12px;">
+    <li>Hot (as hot as tolerable)</li>
+    <li>Cold (as cold as tolerable)</li>
+    <li>3 cycles minimum</li>
+    <li>Always end on cold</li>
+    <li>Available: ice bucket for feet/calves</li>
+  </ul>
+</div>
+
+<div class="recovery-card">
+  <div class="recovery-icon">🔁</div>
+  <h4>Active Recovery</h4>
+  <p style="color:var(--smoke);font-size:13px;">Friday (off day 2) is your active recovery day. Light movement only. No intensity.</p>
+  <ul class="meal-items" style="margin-top:12px;">
+    <li>30 min walk or light jog</li>
+    <li>20 min full-body stretching</li>
+    <li>Foam roll: calves, quads, lats, thoracic</li>
+    <li>No heavy bag, no sprints</li>
+    <li>Shadowbox 10 min max (loose, fluid)</li>
+  </ul>
+</div>
+
+<div class="recovery-card">
+  <div class="recovery-icon">🤸</div>
+  <h4>Nightly Stretch Routine</h4>
+  <p style="color:var(--smoke);font-size:13px;">15 minutes every night. Non-negotiable. Flexibility = injury prevention = consistent training.</p>
+  <ul class="meal-items" style="margin-top:12px;">
+    <li>Hip flexors: 60 sec each</li>
+    <li>Hamstrings: 60 sec each</li>
+    <li>Shoulder cross-body: 45 sec</li>
+    <li>Thoracic rotation: 10 reps each side</li>
+    <li>Neck rolls: slow and controlled</li>
+  </ul>
+</div>
+
+<div class="recovery-card">
+  <div class="recovery-icon">📉</div>
+  <h4>Overtraining Signals</h4>
+  <p style="color:var(--smoke);font-size:13px;">Know the line. Pushing through soreness is training. Pushing through these signals is injury.</p>
+  <ul class="meal-items" style="margin-top:12px;">
+    <li>Resting HR elevated +10 bpm</li>
+    <li>Sleep quality deteriorating</li>
+    <li>Motivation drops sharply (not laziness)</li>
+    <li>Joint pain (not muscle soreness)</li>
+    <li>→ Take an extra rest day. No hesitation.</li>
+  </ul>
+</div>
+
+<div class="recovery-card">
+  <div class="recovery-icon">💊</div>
+  <h4>Supplementation</h4>
+  <p style="color:var(--smoke);font-size:13px;">Minimal. Evidence-based only. Food first.</p>
+  <ul class="meal-items" style="margin-top:12px;">
+    <li>Creatine monohydrate: 5g daily</li>
+    <li>Magnesium glycinate: 400mg nightly</li>
+    <li>Vitamin D3: 2000–4000 IU daily</li>
+    <li>Protein powder: fill gaps to hit 160g</li>
+    <li>Electrolytes: on double-session days</li>
+  </ul>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ══════════ BENCHMARKS ══════════ -->
+
+<section id="benchmarks">
+  <div class="section-label">Progress Checkpoints</div>
+  <h2>10-Day Benchmarks</h2>
+
+  <p style="color:var(--smoke);margin-bottom:32px;">Test these on Day 10, 20, 30, 40, 50, and 60. No skipping tests. Numbers tell you the truth when your ego doesn't.</p>
+
+  <div class="benchmark-row fade-up">
+    <div class="benchmark-card">
+      <div class="benchmark-day">D10</div>
+      <div class="benchmark-item">Run: <strong>Can complete 3 miles continuously</strong></div>
+      <div class="benchmark-item">Jump rope: <strong>6 min continuous</strong></div>
+      <div class="benchmark-item">Push-ups: <strong>Baseline + 10%</strong></div>
+      <div class="benchmark-item">Skill: <strong>Clean jab from both range distances</strong></div>
+      <div class="benchmark-item">Habit: <strong>0 missed morning sessions</strong></div>
+    </div>
+    <div class="benchmark-card">
+      <div class="benchmark-day" style="color:var(--gold);">D20</div>
+      <div class="benchmark-item">Run: <strong>3 miles + 4 strides without stopping</strong></div>
+      <div class="benchmark-item">Jump rope: <strong>9 min continuous</strong></div>
+      <div class="benchmark-item">Bag rounds: <strong>5x3 min at consistent output</strong></div>
+      <div class="benchmark-item">Skill: <strong>Clean 1-2, pivot, move</strong></div>
+      <div class="benchmark-item">Habit: <strong>All meals prepped on Sunday</strong></div>
+    </div>
+    <div class="benchmark-card">
+      <div class="benchmark-day" style="color:var(--gold);">D30</div>
+      <div class="benchmark-item">Mile time: <strong>Under 8:30</strong></div>
+      <div class="benchmark-item">Jump rope: <strong>11 min + alternating feet</strong></div>
+      <div class="benchmark-item">Sparring: <strong>4 rounds light contact, composed</strong></div>
+      <div class="benchmark-item">Skill: <strong>5 distinct combinations memorized</strong></div>
+      <div class="benchmark-item">S&C: <strong>20+ pull-ups total volume per session</strong></div>
+    </div>
+    <div class="benchmark-card">
+      <div class="benchmark-day" style="color:var(--acid);">D40</div>
+      <div class="benchmark-item">Run: <strong>5 miles off-day with intervals</strong></div>
+      <div class="benchmark-item">Bag: <strong>7x3 min at fight pace</strong></div>
+      <div class="benchmark-item">Sparring: <strong>5 rounds medium contact, game plan applied</strong></div>
+      <div class="benchmark-item">Skill: <strong>Slipping punches in live sparring</strong></div>
+      <div class="benchmark-item">Mental: <strong>0 missed post-8pm sessions</strong></div>
+    </div>
+    <div class="benchmark-card">
+      <div class="benchmark-day" style="color:var(--acid);">D50</div>
+      <div class="benchmark-item">Mile time: <strong>Under 7:45</strong></div>
+      <div class="benchmark-item">Bag: <strong>8x3 min full output</strong></div>
+      <div class="benchmark-item">Sparring: <strong>6 rounds medium-hard, composed</strong></div>
+      <div class="benchmark-item">Skill: <strong>Fight plan with 3 signature combos</strong></div>
+      <div class="benchmark-item">S&C: <strong>10 consecutive pull-ups</strong></div>
+    </div>
+    <div class="benchmark-card">
+      <div class="benchmark-day" style="color:var(--acid);">D60</div>
+      <div class="benchmark-item">Mile time: <strong>Under 7:30</strong></div>
+      <div class="benchmark-item">Jump rope: <strong>12 min continuous</strong></div>
+      <div class="benchmark-item">Sparring: <strong>8 rounds, fight simulation, composed</strong></div>
+      <div class="benchmark-item">Skill: <strong>Recognizable style, consistent defense</strong></div>
+      <div class="benchmark-item">Assessment: <strong>Ready for amateur competition conversation</strong></div>
+    </div>
+  </div>
+
+  <div class="callout acid" style="margin-top:32px;">
+    <p><strong>Day 60 Fighter Assessment:</strong> If you executed this system — every morning session, every post-work session, every meal, every recovery protocol — you will be noticeably more conditioned, technically sharper, and mentally harder than when you started. The question on Day 60 is not "am I ready?" It's "what's the next 60 days look like?"</p>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+
+<footer>
+  <div class="footer-title">Execute.</div>
+  <div class="footer-sub">Green Lion Studio · 5'7 · 130 LB · 60 Days · Built Around Your Schedule</div>
+  <div style="margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ash);">
+    THU/FRI OFF · EARLY SHIFTS ~6PM · LATE SHIFTS ~8PM · MORNING ROADWORK EVERY DAY
+  </div>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
