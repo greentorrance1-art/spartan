@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,679 +7,677 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
 
-:root {
-–black: #0a0a0a;
-–carbon: #111111;
-–iron: #1a1a1a;
-–steel: #2a2a2a;
-–ash: #444;
-–smoke: #888;
-–chalk: #ccc;
-–white: #f4f4f0;
-–crimson: #c0392b;
-–blood: #8b0000;
-–gold: #c9a84c;
-–forest: #2d5a27;
-–acid: #a8ff3e;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-background: var(–black);
-color: var(–white);
-font-family: ‘IBM Plex Sans’, sans-serif;
-font-size: 14px;
-line-height: 1.6;
-overflow-x: hidden;
-}
-
-/* ── HERO ── */
-.hero {
-position: relative;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-padding: 60px 20px;
-background: var(–black);
-overflow: hidden;
-}
-
-.hero::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background:
-repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(192,57,43,0.06) 40px),
-repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(192,57,43,0.04) 40px);
-}
-
-.hero-number {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(180px, 30vw, 320px);
-color: rgba(192,57,43,0.08);
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-letter-spacing: -10px;
-pointer-events: none;
-user-select: none;
-}
-
-.hero-tag {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(–crimson);
-margin-bottom: 24px;
-position: relative;
-}
-
-.hero h1 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(52px, 9vw, 110px);
-letter-spacing: 4px;
-line-height: 0.95;
-position: relative;
-text-transform: uppercase;
-}
-
-.hero h1 span { color: var(–crimson); }
-
-.hero-sub {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 12px;
-color: var(–smoke);
-margin-top: 28px;
-letter-spacing: 2px;
-position: relative;
-max-width: 500px;
-}
-
-.hero-divider {
-width: 60px;
-height: 2px;
-background: var(–crimson);
-margin: 32px auto;
-position: relative;
-}
-
-.architects {
-display: flex;
-gap: 32px;
-flex-wrap: wrap;
-justify-content: center;
-position: relative;
-margin-top: 8px;
-}
-
-.architect {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–ash);
-text-transform: uppercase;
-letter-spacing: 2px;
-}
-
-.architect strong {
-display: block;
-color: var(–gold);
-font-size: 11px;
-}
-
-/* ── NAV ── */
-nav {
-position: sticky;
-top: 0;
-z-index: 100;
-background: rgba(10,10,10,0.95);
-backdrop-filter: blur(10px);
-border-bottom: 1px solid var(–steel);
-padding: 0 20px;
-overflow-x: auto;
-white-space: nowrap;
-}
-
-nav ul {
-display: inline-flex;
-list-style: none;
-gap: 0;
-min-width: 100%;
-}
-
-nav a {
-display: block;
-padding: 16px 18px;
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–ash);
-text-decoration: none;
-border-bottom: 2px solid transparent;
-transition: all 0.2s;
-}
-
-nav a:hover { color: var(–white); border-bottom-color: var(–crimson); }
-
-/* ── SECTIONS ── */
-section {
-max-width: 1100px;
-margin: 0 auto;
-padding: 80px 24px;
-border-bottom: 1px solid var(–steel);
-}
-
-.section-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(–crimson);
-margin-bottom: 16px;
-}
-
-h2 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(36px, 5vw, 64px);
-letter-spacing: 2px;
-line-height: 1;
-margin-bottom: 40px;
-color: var(–white);
-}
-
-h3 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 26px;
-letter-spacing: 1px;
-color: var(–white);
-margin-bottom: 12px;
-}
-
-h4 {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-letter-spacing: 3px;
-text-transform: uppercase;
-color: var(–gold);
-margin-bottom: 8px;
-}
-
-p { color: var(–chalk); margin-bottom: 12px; line-height: 1.7; }
-
-/* ── PHASE BLOCKS ── */
-.phase-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2px;
-margin-bottom: 48px;
-}
-
-.phase-card {
-background: var(–iron);
-padding: 32px 28px;
-position: relative;
-overflow: hidden;
-}
-
-.phase-card::before {
-content: attr(data-num);
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 120px;
-color: rgba(255,255,255,0.03);
-position: absolute;
-bottom: -20px;
-right: 10px;
-line-height: 1;
-pointer-events: none;
-}
-
-.phase-card.crimson { border-top: 3px solid var(–crimson); }
-.phase-card.gold { border-top: 3px solid var(–gold); }
-.phase-card.acid { border-top: 3px solid var(–acid); }
-
-.phase-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 3px;
-text-transform: uppercase;
-margin-bottom: 8px;
-}
-
-.phase-card.crimson .phase-label { color: var(–crimson); }
-.phase-card.gold .phase-label { color: var(–gold); }
-.phase-card.acid .phase-label { color: var(–acid); }
-
-.phase-days {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 42px;
-line-height: 1;
-margin-bottom: 16px;
-}
-
-.phase-focus {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–smoke);
-margin-bottom: 20px;
-letter-spacing: 1px;
-}
-
-/* ── SCHEDULE BLOCKS ── */
-.schedule-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-gap: 2px;
-}
-
-.day-type {
-background: var(–iron);
-padding: 28px;
-}
-
-.day-type-header {
-display: flex;
-align-items: center;
-gap: 12px;
-margin-bottom: 24px;
-padding-bottom: 16px;
-border-bottom: 1px solid var(–steel);
-}
-
-.day-dot {
-width: 10px;
-height: 10px;
-border-radius: 50%;
-flex-shrink: 0;
-}
-
-.dot-early { background: var(–acid); }
-.dot-late { background: var(–gold); }
-.dot-off { background: var(–crimson); }
-
-.day-type-title {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 20px;
-letter-spacing: 1px;
-}
-
-.time-block {
-display: flex;
-gap: 16px;
-margin-bottom: 16px;
-align-items: flex-start;
-}
-
-.time-stamp {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–crimson);
-min-width: 90px;
-padding-top: 1px;
-letter-spacing: 1px;
-}
-
-.time-content {
-flex: 1;
-}
-
-.time-title {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 12px;
-font-weight: 600;
-color: var(–white);
-margin-bottom: 3px;
-}
-
-.time-detail {
-font-size: 12px;
-color: var(–smoke);
-line-height: 1.5;
-}
-
-/* ── TABLES ── */
-.data-table {
-width: 100%;
-border-collapse: collapse;
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 12px;
-margin-bottom: 32px;
-}
-
-.data-table th {
-background: var(–crimson);
-color: var(–white);
-padding: 10px 14px;
-text-align: left;
-font-size: 10px;
-letter-spacing: 2px;
-text-transform: uppercase;
-font-weight: 600;
-}
-
-.data-table td {
-padding: 10px 14px;
-border-bottom: 1px solid var(–steel);
-color: var(–chalk);
-vertical-align: top;
-}
-
-.data-table tr:nth-child(even) td { background: var(–iron); }
-.data-table tr:hover td { background: var(–steel); }
-
-.data-table td:first-child {
-color: var(–gold);
-font-weight: 600;
-white-space: nowrap;
-}
-
-/* ── BENCHMARK BLOCKS ── */
-.benchmark-row {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 2px;
-margin-bottom: 32px;
-}
-
-.benchmark-card {
-background: var(–iron);
-padding: 24px 20px;
-border-left: 3px solid var(–crimson);
-}
-
-.benchmark-day {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 36px;
-color: var(–crimson);
-line-height: 1;
-margin-bottom: 8px;
-}
-
-.benchmark-item {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–smoke);
-margin-bottom: 4px;
-}
-
-.benchmark-item strong { color: var(–white); }
-
-/* ── NUTRITION ── */
-.meal-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-gap: 2px;
-}
-
-.meal-card {
-background: var(–iron);
-padding: 24px 20px;
-}
-
-.meal-time {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–gold);
-letter-spacing: 2px;
-text-transform: uppercase;
-margin-bottom: 8px;
-}
-
-.meal-name {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 20px;
-margin-bottom: 10px;
-}
-
-.meal-items {
-list-style: none;
-}
-
-.meal-items li {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–smoke);
-padding: 4px 0;
-border-bottom: 1px solid var(–steel);
-}
-
-.meal-items li:last-child { border-bottom: none; }
-
-.macro-bar {
-display: flex;
-gap: 12px;
-margin-top: 10px;
-}
-
-.macro {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-color: var(–smoke);
-}
-
-.macro span { color: var(–acid); font-weight: 600; }
-
-/* ── MENTAL ── */
-.protocol-list {
-list-style: none;
-counter-reset: protocol;
-}
-
-.protocol-list li {
-counter-increment: protocol;
-display: flex;
-gap: 20px;
-padding: 20px 0;
-border-bottom: 1px solid var(–steel);
-align-items: flex-start;
-}
-
-.protocol-list li::before {
-content: counter(protocol, decimal-leading-zero);
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 28px;
-color: var(–crimson);
-line-height: 1;
-min-width: 36px;
-}
-
-.protocol-text { flex: 1; }
-
-.protocol-title {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 12px;
-font-weight: 600;
-color: var(–white);
-margin-bottom: 4px;
-letter-spacing: 1px;
-}
-
-.protocol-body {
-font-size: 13px;
-color: var(–smoke);
-line-height: 1.6;
-}
-
-/* ── RECOVERY ── */
-.recovery-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-gap: 2px;
-}
-
-.recovery-card {
-background: var(–iron);
-padding: 24px;
-}
-
-.recovery-icon {
-font-size: 28px;
-margin-bottom: 12px;
-}
-
-/* ── FOOTER ── */
-footer {
-background: var(–carbon);
-padding: 60px 24px;
-text-align: center;
-border-top: 1px solid var(–steel);
-}
-
-.footer-title {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 48px;
-letter-spacing: 4px;
-color: var(–crimson);
-margin-bottom: 12px;
-}
-
-.footer-sub {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–ash);
-letter-spacing: 2px;
-}
-
-/* ── TAGS ── */
-.tag {
-display: inline-block;
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-letter-spacing: 1px;
-padding: 4px 10px;
-border: 1px solid;
-margin: 3px 3px 3px 0;
-text-transform: uppercase;
-}
-
-.tag-crimson { border-color: var(–crimson); color: var(–crimson); }
-.tag-gold { border-color: var(–gold); color: var(–gold); }
-.tag-acid { border-color: var(–acid); color: var(–acid); }
-.tag-smoke { border-color: var(–ash); color: var(–smoke); }
-
-/* ── CALLOUT ── */
-.callout {
-border-left: 3px solid var(–crimson);
-background: var(–iron);
-padding: 20px 24px;
-margin: 24px 0;
-}
-
-.callout.gold { border-left-color: var(–gold); }
-.callout.acid { border-left-color: var(–acid); }
-
-.callout p { margin: 0; color: var(–chalk); font-size: 13px; }
-
-/* ── SKILL BLOCK ── */
-.skill-block {
-background: var(–iron);
-padding: 28px;
-margin-bottom: 2px;
-}
-
-.skill-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 16px;
-flex-wrap: wrap;
-gap: 12px;
-}
-
-.skill-rounds {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–crimson);
-border: 1px solid var(–crimson);
-padding: 4px 12px;
-}
-
-.drill-list {
-list-style: none;
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-gap: 8px;
-}
-
-.drill-list li {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-color: var(–smoke);
-padding: 8px 12px;
-background: var(–steel);
-display: flex;
-align-items: center;
-gap: 8px;
-}
-
-.drill-list li::before {
-content: ‘▸’;
-color: var(–crimson);
-font-size: 10px;
-}
-
-/* ── RUNNING PROG ── */
-.run-timeline {
-position: relative;
-padding-left: 24px;
-}
-
-.run-timeline::before {
-content: ‘’;
-position: absolute;
-left: 0;
-top: 8px;
-bottom: 8px;
-width: 2px;
-background: linear-gradient(to bottom, var(–crimson), var(–gold), var(–acid));
-}
-
-.run-entry {
-position: relative;
-padding: 16px 0 16px 24px;
-border-bottom: 1px solid var(–steel);
-}
-
-.run-entry::before {
-content: ‘’;
-position: absolute;
-left: -5px;
-top: 22px;
-width: 12px;
-height: 12px;
-border-radius: 50%;
-background: var(–crimson);
-border: 2px solid var(–black);
-}
-
-.run-phase { font-family: ‘IBM Plex Mono’, monospace; font-size: 10px; color: var(–crimson); letter-spacing: 2px; text-transform: uppercase; }
-.run-desc { font-family: ‘IBM Plex Mono’, monospace; font-size: 12px; color: var(–white); margin: 4px 0; font-weight: 600; }
-.run-detail { font-size: 12px; color: var(–smoke); }
-
-/* scroll fade-in */
-.fade-up {
-opacity: 0;
-transform: translateY(20px);
-transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.fade-up.visible {
-opacity: 1;
-transform: translateY(0);
-}
+  :root {
+    --black: #0a0a0a;
+    --carbon: #111111;
+    --iron: #1a1a1a;
+    --steel: #2a2a2a;
+    --ash: #444;
+    --smoke: #888;
+    --chalk: #ccc;
+    --white: #f4f4f0;
+    --crimson: #c0392b;
+    --blood: #8b0000;
+    --gold: #c9a84c;
+    --forest: #2d5a27;
+    --acid: #a8ff3e;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--black);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(192,57,43,0.06) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(192,57,43,0.04) 40px);
+  }
+
+  .hero-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(180px, 30vw, 320px);
+    color: rgba(192,57,43,0.08);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: -10px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 9vw, 110px);
+    letter-spacing: 4px;
+    line-height: 0.95;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .hero h1 span { color: var(--crimson); }
+
+  .hero-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--smoke);
+    margin-top: 28px;
+    letter-spacing: 2px;
+    position: relative;
+    max-width: 500px;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--crimson);
+    margin: 32px auto;
+    position: relative;
+  }
+
+  .architects {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    margin-top: 8px;
+  }
+
+  .architect {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--ash);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .architect strong {
+    display: block;
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--steel);
+    padding: 0 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  nav ul {
+    display: inline-flex;
+    list-style: none;
+    gap: 0;
+    min-width: 100%;
+  }
+
+  nav a {
+    display: block;
+    padding: 16px 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  nav a:hover { color: var(--white); border-bottom-color: var(--crimson); }
+
+  /* ── SECTIONS ── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    border-bottom: 1px solid var(--steel);
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 40px;
+    color: var(--white);
+  }
+
+  h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  p { color: var(--chalk); margin-bottom: 12px; line-height: 1.7; }
+
+  /* ── PHASE BLOCKS ── */
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+
+  .phase-card {
+    background: var(--iron);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phase-card::before {
+    content: attr(data-num);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 120px;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .phase-card.crimson { border-top: 3px solid var(--crimson); }
+  .phase-card.gold { border-top: 3px solid var(--gold); }
+  .phase-card.acid { border-top: 3px solid var(--acid); }
+
+  .phase-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .phase-card.crimson .phase-label { color: var(--crimson); }
+  .phase-card.gold .phase-label { color: var(--gold); }
+  .phase-card.acid .phase-label { color: var(--acid); }
+
+  .phase-days {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .phase-focus {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--smoke);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ── SCHEDULE BLOCKS ── */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
+  }
+
+  .day-type {
+    background: var(--iron);
+    padding: 28px;
+  }
+
+  .day-type-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--steel);
+  }
+
+  .day-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-early { background: var(--acid); }
+  .dot-late { background: var(--gold); }
+  .dot-off { background: var(--crimson); }
+
+  .day-type-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .time-block {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+
+  .time-stamp {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--crimson);
+    min-width: 90px;
+    padding-top: 1px;
+    letter-spacing: 1px;
+  }
+
+  .time-content {
+    flex: 1;
+  }
+
+  .time-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .time-detail {
+    font-size: 12px;
+    color: var(--smoke);
+    line-height: 1.5;
+  }
+
+  /* ── TABLES ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 32px;
+  }
+
+  .data-table th {
+    background: var(--crimson);
+    color: var(--white);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--steel);
+    color: var(--chalk);
+    vertical-align: top;
+  }
+
+  .data-table tr:nth-child(even) td { background: var(--iron); }
+  .data-table tr:hover td { background: var(--steel); }
+
+  .data-table td:first-child {
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* ── BENCHMARK BLOCKS ── */
+  .benchmark-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    margin-bottom: 32px;
+  }
+
+  .benchmark-card {
+    background: var(--iron);
+    padding: 24px 20px;
+    border-left: 3px solid var(--crimson);
+  }
+
+  .benchmark-day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--crimson);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .benchmark-item {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--smoke);
+    margin-bottom: 4px;
+  }
+
+  .benchmark-item strong { color: var(--white); }
+
+  /* ── NUTRITION ── */
+  .meal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+  }
+
+  .meal-card {
+    background: var(--iron);
+    padding: 24px 20px;
+  }
+
+  .meal-time {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .meal-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .meal-items {
+    list-style: none;
+  }
+
+  .meal-items li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--smoke);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--steel);
+  }
+
+  .meal-items li:last-child { border-bottom: none; }
+
+  .macro-bar {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .macro {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--smoke);
+  }
+
+  .macro span { color: var(--acid); font-weight: 600; }
+
+  /* ── MENTAL ── */
+  .protocol-list {
+    list-style: none;
+    counter-reset: protocol;
+  }
+
+  .protocol-list li {
+    counter-increment: protocol;
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--steel);
+    align-items: flex-start;
+  }
+
+  .protocol-list li::before {
+    content: counter(protocol, decimal-leading-zero);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--crimson);
+    line-height: 1;
+    min-width: 36px;
+  }
+
+  .protocol-text { flex: 1; }
+
+  .protocol-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .protocol-body {
+    font-size: 13px;
+    color: var(--smoke);
+    line-height: 1.6;
+  }
+
+  /* ── RECOVERY ── */
+  .recovery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .recovery-card {
+    background: var(--iron);
+    padding: 24px;
+  }
+
+  .recovery-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--carbon);
+    padding: 60px 24px;
+    text-align: center;
+    border-top: 1px solid var(--steel);
+  }
+
+  .footer-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 4px;
+    color: var(--crimson);
+    margin-bottom: 12px;
+  }
+
+  .footer-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ash);
+    letter-spacing: 2px;
+  }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid;
+    margin: 3px 3px 3px 0;
+    text-transform: uppercase;
+  }
+
+  .tag-crimson { border-color: var(--crimson); color: var(--crimson); }
+  .tag-gold { border-color: var(--gold); color: var(--gold); }
+  .tag-acid { border-color: var(--acid); color: var(--acid); }
+  .tag-smoke { border-color: var(--ash); color: var(--smoke); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 3px solid var(--crimson);
+    background: var(--iron);
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .callout.gold { border-left-color: var(--gold); }
+  .callout.acid { border-left-color: var(--acid); }
+
+  .callout p { margin: 0; color: var(--chalk); font-size: 13px; }
+
+  /* ── SKILL BLOCK ── */
+  .skill-block {
+    background: var(--iron);
+    padding: 28px;
+    margin-bottom: 2px;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .skill-rounds {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--crimson);
+    border: 1px solid var(--crimson);
+    padding: 4px 12px;
+  }
+
+  .drill-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+  }
+
+  .drill-list li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--smoke);
+    padding: 8px 12px;
+    background: var(--steel);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .drill-list li::before {
+    content: '▸';
+    color: var(--crimson);
+    font-size: 10px;
+  }
+
+  /* ── RUNNING PROG ── */
+  .run-timeline {
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .run-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--crimson), var(--gold), var(--acid));
+  }
+
+  .run-entry {
+    position: relative;
+    padding: 16px 0 16px 24px;
+    border-bottom: 1px solid var(--steel);
+  }
+
+  .run-entry::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--crimson);
+    border: 2px solid var(--black);
+  }
+
+  .run-phase { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--crimson); letter-spacing: 2px; text-transform: uppercase; }
+  .run-desc { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--white); margin: 4px 0; font-weight: 600; }
+  .run-detail { font-size: 12px; color: var(--smoke); }
+
+  /* scroll fade-in */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
-
 </head>
 <body>
 
 <!-- ══════════ HERO ══════════ -->
-
 <div class="hero">
   <div class="hero-number">60</div>
   <div class="hero-tag">Green Lion Studio · Fighter Development Program</div>
@@ -696,7 +693,6 @@ transform: translateY(0);
 </div>
 
 <!-- ══════════ NAV ══════════ -->
-
 <nav>
   <ul>
     <li><a href="#overview">Overview</a></li>
@@ -713,7 +709,6 @@ transform: translateY(0);
 </nav>
 
 <!-- ══════════ OVERVIEW ══════════ -->
-
 <section id="overview">
   <div class="section-label">System Overview</div>
   <h2>The Blueprint</h2>
@@ -775,7 +770,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ DAILY SCHEDULE ══════════ -->
-
 <section id="schedule">
   <div class="section-label">Daily Structure</div>
   <h2>Three Templates</h2>
@@ -784,244 +778,240 @@ transform: translateY(0);
 
   <div class="schedule-grid fade-up">
 
-```
-<!-- EARLY END DAY -->
-<div class="day-type">
-  <div class="day-type-header">
-    <div class="day-dot dot-early"></div>
-    <div>
-      <div class="day-type-title">Early-End Day</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Shift ends ~6pm · Sun/Mon/Tue/Sat variants</div>
-    </div>
-  </div>
+    <!-- EARLY END DAY -->
+    <div class="day-type">
+      <div class="day-type-header">
+        <div class="day-dot dot-early"></div>
+        <div>
+          <div class="day-type-title">Early-End Day</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Shift ends ~6pm · Sun/Mon/Tue/Sat variants</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">5:00 AM</div>
-    <div class="time-content">
-      <div class="time-title">WAKE + ACTIVATE</div>
-      <div class="time-detail">Water (500ml). No phone. Clothes already laid out the night before.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">5:00 AM</div>
+        <div class="time-content">
+          <div class="time-title">WAKE + ACTIVATE</div>
+          <div class="time-detail">Water (500ml). No phone. Clothes already laid out the night before.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">5:15 AM</div>
-    <div class="time-content">
-      <div class="time-title">MORNING ROADWORK</div>
-      <div class="time-detail">Running progression (see running section). 30–45 min total. Return. Cold water splash face.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">5:15 AM</div>
+        <div class="time-content">
+          <div class="time-title">MORNING ROADWORK</div>
+          <div class="time-detail">Running progression (see running section). 30–45 min total. Return. Cold water splash face.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">6:00 AM</div>
-    <div class="time-content">
-      <div class="time-title">SKILL WORK (AT HOME)</div>
-      <div class="time-detail">20 min shadowboxing. Mirror or recorded. Phase-specific focus. No sloppy reps.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">6:00 AM</div>
+        <div class="time-content">
+          <div class="time-title">SKILL WORK (AT HOME)</div>
+          <div class="time-detail">20 min shadowboxing. Mirror or recorded. Phase-specific focus. No sloppy reps.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">6:25 AM</div>
-    <div class="time-content">
-      <div class="time-title">SHOWER + PACK</div>
-      <div class="time-detail">Prep all meals. Gym bag packed. Out the door within 30 min.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">6:25 AM</div>
+        <div class="time-content">
+          <div class="time-title">SHOWER + PACK</div>
+          <div class="time-detail">Prep all meals. Gym bag packed. Out the door within 30 min.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">WORK</div>
-    <div class="time-content">
-      <div class="time-title">~9:45 AM – 6:00 PM</div>
-      <div class="time-detail">Stay hydrated. Eat on schedule. Visualize combinations during downtime.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">WORK</div>
+        <div class="time-content">
+          <div class="time-title">~9:45 AM – 6:00 PM</div>
+          <div class="time-detail">Stay hydrated. Eat on schedule. Visualize combinations during downtime.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">7:00 PM</div>
-    <div class="time-content">
-      <div class="time-title">GYM SESSION</div>
-      <div class="time-detail">60–75 min. Bag work, mitts (if coach/partner), pad work. Phase-specific focus. Full output.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">7:00 PM</div>
+        <div class="time-content">
+          <div class="time-title">GYM SESSION</div>
+          <div class="time-detail">60–75 min. Bag work, mitts (if coach/partner), pad work. Phase-specific focus. Full output.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">8:30 PM</div>
-    <div class="time-content">
-      <div class="time-title">POST-GYM MEAL</div>
-      <div class="time-detail">Protein + carbs within 45 min. See nutrition section.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">8:30 PM</div>
+        <div class="time-content">
+          <div class="time-title">POST-GYM MEAL</div>
+          <div class="time-detail">Protein + carbs within 45 min. See nutrition section.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">9:30 PM</div>
-    <div class="time-content">
-      <div class="time-title">WIND DOWN</div>
-      <div class="time-detail">Stretch 15 min. Review what you worked on. Lay out tomorrow's clothes. In bed by 10pm.</div>
+      <div class="time-block">
+        <div class="time-stamp">9:30 PM</div>
+        <div class="time-content">
+          <div class="time-title">WIND DOWN</div>
+          <div class="time-detail">Stretch 15 min. Review what you worked on. Lay out tomorrow's clothes. In bed by 10pm.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- LATE END DAY -->
-<div class="day-type">
-  <div class="day-type-header">
-    <div class="day-dot dot-late"></div>
-    <div>
-      <div class="day-type-title">Late-End Day</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Shift ends ~8pm · Tue/Wed variants</div>
-    </div>
-  </div>
+    <!-- LATE END DAY -->
+    <div class="day-type">
+      <div class="day-type-header">
+        <div class="day-dot dot-late"></div>
+        <div>
+          <div class="day-type-title">Late-End Day</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Shift ends ~8pm · Tue/Wed variants</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">5:30 AM</div>
-    <div class="time-content">
-      <div class="time-title">WAKE + ACTIVATE</div>
-      <div class="time-detail">Water (500ml). Slower start. Still no phone for first 10 min.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">5:30 AM</div>
+        <div class="time-content">
+          <div class="time-title">WAKE + ACTIVATE</div>
+          <div class="time-detail">Water (500ml). Slower start. Still no phone for first 10 min.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">5:45 AM</div>
-    <div class="time-content">
-      <div class="time-title">FULL MORNING BLOCK</div>
-      <div class="time-detail">This is your primary training window. Run + shadowboxing + 15 min bag work if possible. 60–75 min total.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">5:45 AM</div>
+        <div class="time-content">
+          <div class="time-title">FULL MORNING BLOCK</div>
+          <div class="time-detail">This is your primary training window. Run + shadowboxing + 15 min bag work if possible. 60–75 min total.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">7:00 AM</div>
-    <div class="time-content">
-      <div class="time-title">SHOWER + FUEL</div>
-      <div class="time-detail">Full breakfast. Pack all meals. Relaxed pace before late shift.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">7:00 AM</div>
+        <div class="time-content">
+          <div class="time-title">SHOWER + FUEL</div>
+          <div class="time-detail">Full breakfast. Pack all meals. Relaxed pace before late shift.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">WORK</div>
-    <div class="time-content">
-      <div class="time-title">~11:45 AM – 8:00 PM</div>
-      <div class="time-detail">Eat every 3–4 hours. Hydrate. Mental visualizations between customers.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">WORK</div>
+        <div class="time-content">
+          <div class="time-title">~11:45 AM – 8:00 PM</div>
+          <div class="time-detail">Eat every 3–4 hours. Hydrate. Mental visualizations between customers.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">8:30 PM</div>
-    <div class="time-content">
-      <div class="time-title">RETURN + DECOMPRESS</div>
-      <div class="time-detail">Do NOT skip movement. 20 min minimum: shadowboxing or light bag, 3 rounds. This is non-negotiable discipline.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">8:30 PM</div>
+        <div class="time-content">
+          <div class="time-title">RETURN + DECOMPRESS</div>
+          <div class="time-detail">Do NOT skip movement. 20 min minimum: shadowboxing or light bag, 3 rounds. This is non-negotiable discipline.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">9:00 PM</div>
-    <div class="time-content">
-      <div class="time-title">POST MEAL + STRETCH</div>
-      <div class="time-detail">Protein meal. 15 min full body stretch. No screens after 9:30.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">9:00 PM</div>
+        <div class="time-content">
+          <div class="time-title">POST MEAL + STRETCH</div>
+          <div class="time-detail">Protein meal. 15 min full body stretch. No screens after 9:30.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">10:15 PM</div>
-    <div class="time-content">
-      <div class="time-title">SLEEP</div>
-      <div class="time-detail">This is your absolute latest. Late days get less sleep — protect every minute.</div>
+      <div class="time-block">
+        <div class="time-stamp">10:15 PM</div>
+        <div class="time-content">
+          <div class="time-title">SLEEP</div>
+          <div class="time-detail">This is your absolute latest. Late days get less sleep — protect every minute.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- OFF DAY -->
-<div class="day-type">
-  <div class="day-type-header">
-    <div class="day-dot dot-off"></div>
-    <div>
-      <div class="day-type-title">Off Day (Thu/Fri)</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Full volume · Primary development days</div>
-    </div>
-  </div>
+    <!-- OFF DAY -->
+    <div class="day-type">
+      <div class="day-type-header">
+        <div class="day-dot dot-off"></div>
+        <div>
+          <div class="day-type-title">Off Day (Thu/Fri)</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--smoke);">Full volume · Primary development days</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">6:00 AM</div>
-    <div class="time-content">
-      <div class="time-title">WAKE</div>
-      <div class="time-detail">Same time every day. Discipline doesn't know days off.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">6:00 AM</div>
+        <div class="time-content">
+          <div class="time-title">WAKE</div>
+          <div class="time-detail">Same time every day. Discipline doesn't know days off.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">6:15 AM</div>
-    <div class="time-content">
-      <div class="time-title">ROADWORK BLOCK</div>
-      <div class="time-detail">Extended run (phase-specific). 40–60 min. Sprints, hills, or long steady state based on phase.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">6:15 AM</div>
+        <div class="time-content">
+          <div class="time-title">ROADWORK BLOCK</div>
+          <div class="time-detail">Extended run (phase-specific). 40–60 min. Sprints, hills, or long steady state based on phase.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">7:30 AM</div>
-    <div class="time-content">
-      <div class="time-title">BREAKFAST + REST</div>
-      <div class="time-detail">Full meal. 90 min recovery before afternoon session.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">7:30 AM</div>
+        <div class="time-content">
+          <div class="time-title">BREAKFAST + REST</div>
+          <div class="time-detail">Full meal. 90 min recovery before afternoon session.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">10:00 AM</div>
-    <div class="time-content">
-      <div class="time-title">GYM SESSION 1</div>
-      <div class="time-detail">Technical skill work: shadowboxing, bag, mitts, footwork drills. 90 min. Zero rush.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">10:00 AM</div>
+        <div class="time-content">
+          <div class="time-title">GYM SESSION 1</div>
+          <div class="time-detail">Technical skill work: shadowboxing, bag, mitts, footwork drills. 90 min. Zero rush.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">12:00 PM</div>
-    <div class="time-content">
-      <div class="time-title">LUNCH + RECOVERY</div>
-      <div class="time-detail">Full meal. 2 hr gap before S&C.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">12:00 PM</div>
+        <div class="time-content">
+          <div class="time-title">LUNCH + RECOVERY</div>
+          <div class="time-detail">Full meal. 2 hr gap before S&C.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">2:30 PM</div>
-    <div class="time-content">
-      <div class="time-title">STRENGTH & CONDITIONING</div>
-      <div class="time-detail">45–60 min. Bodyweight or gym. Phase-specific program (see S&C section).</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">2:30 PM</div>
+        <div class="time-content">
+          <div class="time-title">STRENGTH & CONDITIONING</div>
+          <div class="time-detail">45–60 min. Bodyweight or gym. Phase-specific program (see S&C section).</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">4:00 PM</div>
-    <div class="time-content">
-      <div class="time-title">SPARRING / DRILLING</div>
-      <div class="time-detail">Phase 2+: light to full sparring. Phase 1: heavy bag rounds, partner drilling only.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">4:00 PM</div>
+        <div class="time-content">
+          <div class="time-title">SPARRING / DRILLING</div>
+          <div class="time-detail">Phase 2+: light to full sparring. Phase 1: heavy bag rounds, partner drilling only.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">5:30 PM</div>
-    <div class="time-content">
-      <div class="time-title">RECOVERY BLOCK</div>
-      <div class="time-detail">Ice bath / contrast shower. Full stretch. Foam roll. Dinner.</div>
-    </div>
-  </div>
+      <div class="time-block">
+        <div class="time-stamp">5:30 PM</div>
+        <div class="time-content">
+          <div class="time-title">RECOVERY BLOCK</div>
+          <div class="time-detail">Ice bath / contrast shower. Full stretch. Foam roll. Dinner.</div>
+        </div>
+      </div>
 
-  <div class="time-block">
-    <div class="time-stamp">9:30 PM</div>
-    <div class="time-content">
-      <div class="time-title">SLEEP</div>
-      <div class="time-detail">Off days you push hard. Sleep is where you adapt. Non-negotiable 8 hours.</div>
+      <div class="time-block">
+        <div class="time-stamp">9:30 PM</div>
+        <div class="time-content">
+          <div class="time-title">SLEEP</div>
+          <div class="time-detail">Off days you push hard. Sleep is where you adapt. Non-negotiable 8 hours.</div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-```
 
   </div>
 </section>
 
 <!-- ══════════ PHASES ══════════ -->
-
 <section id="phases">
   <div class="section-label">60-Day System</div>
   <h2>Phase Breakdown</h2>
 
   <!-- PHASE 1 -->
-
   <div class="skill-block fade-up">
     <div class="skill-header">
       <h3>Phase 1 · Foundation</h3>
@@ -1085,7 +1075,6 @@ transform: translateY(0);
   </div>
 
   <!-- PHASE 2 -->
-
   <div class="skill-block fade-up">
     <div class="skill-header">
       <h3>Phase 2 · Skill + Sparring Introduction</h3>
@@ -1136,7 +1125,6 @@ transform: translateY(0);
   </div>
 
   <!-- PHASE 3 -->
-
   <div class="skill-block fade-up">
     <div class="skill-header">
       <h3>Phase 3 · Fight Preparation</h3>
@@ -1188,7 +1176,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ RUNNING ══════════ -->
-
 <section id="running">
   <div class="section-label">Cardio Engine</div>
   <h2>Running Progression</h2>
@@ -1239,7 +1226,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ SKILLS ══════════ -->
-
 <section id="skills">
   <div class="section-label">Technical Development</div>
   <h2>Skill Training</h2>
@@ -1321,7 +1307,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ STRENGTH ══════════ -->
-
 <section id="strength">
   <div class="section-label">Physical Development</div>
   <h2>Strength & Conditioning</h2>
@@ -1386,7 +1371,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ NUTRITION ══════════ -->
-
 <section id="nutrition">
   <div class="section-label">Fuel System</div>
   <h2>Nutrition Plan</h2>
@@ -1412,87 +1396,84 @@ transform: translateY(0);
       </div>
     </div>
 
-```
-<div class="meal-card">
-  <div class="meal-time">7:00–7:30 AM · Post-Run</div>
-  <div class="meal-name">Recovery Breakfast</div>
-  <ul class="meal-items">
-    <li>4 eggs scrambled + 2 egg whites</li>
-    <li>1 cup oatmeal + honey</li>
-    <li>1 cup fruit (berries or banana)</li>
-    <li>16oz water</li>
-  </ul>
-  <div class="macro-bar">
-    <div class="macro">Cal: <span>620</span></div>
-    <div class="macro">Pro: <span>38g</span></div>
-    <div class="macro">Carb: <span>70g</span></div>
-  </div>
-</div>
+    <div class="meal-card">
+      <div class="meal-time">7:00–7:30 AM · Post-Run</div>
+      <div class="meal-name">Recovery Breakfast</div>
+      <ul class="meal-items">
+        <li>4 eggs scrambled + 2 egg whites</li>
+        <li>1 cup oatmeal + honey</li>
+        <li>1 cup fruit (berries or banana)</li>
+        <li>16oz water</li>
+      </ul>
+      <div class="macro-bar">
+        <div class="macro">Cal: <span>620</span></div>
+        <div class="macro">Pro: <span>38g</span></div>
+        <div class="macro">Carb: <span>70g</span></div>
+      </div>
+    </div>
 
-<div class="meal-card">
-  <div class="meal-time">11:00–11:30 AM · Meal 2 (Packed)</div>
-  <div class="meal-name">Work Meal A</div>
-  <ul class="meal-items">
-    <li>6oz grilled chicken or canned tuna</li>
-    <li>1 cup rice or quinoa</li>
-    <li>1 cup vegetables (pre-roasted)</li>
-    <li>Olive oil or avocado</li>
-  </ul>
-  <div class="macro-bar">
-    <div class="macro">Cal: <span>550</span></div>
-    <div class="macro">Pro: <span>45g</span></div>
-    <div class="macro">Carb: <span>55g</span></div>
-  </div>
-</div>
+    <div class="meal-card">
+      <div class="meal-time">11:00–11:30 AM · Meal 2 (Packed)</div>
+      <div class="meal-name">Work Meal A</div>
+      <ul class="meal-items">
+        <li>6oz grilled chicken or canned tuna</li>
+        <li>1 cup rice or quinoa</li>
+        <li>1 cup vegetables (pre-roasted)</li>
+        <li>Olive oil or avocado</li>
+      </ul>
+      <div class="macro-bar">
+        <div class="macro">Cal: <span>550</span></div>
+        <div class="macro">Pro: <span>45g</span></div>
+        <div class="macro">Carb: <span>55g</span></div>
+      </div>
+    </div>
 
-<div class="meal-card">
-  <div class="meal-time">2:30–3:00 PM · Meal 3 (Packed)</div>
-  <div class="meal-name">Work Meal B</div>
-  <ul class="meal-items">
-    <li>Greek yogurt (full fat, plain) + honey</li>
-    <li>Handful almonds or mixed nuts</li>
-    <li>Apple or orange</li>
-    <li>Hard boiled eggs x2</li>
-  </ul>
-  <div class="macro-bar">
-    <div class="macro">Cal: <span>420</span></div>
-    <div class="macro">Pro: <span>28g</span></div>
-    <div class="macro">Carb: <span>38g</span></div>
-  </div>
-</div>
+    <div class="meal-card">
+      <div class="meal-time">2:30–3:00 PM · Meal 3 (Packed)</div>
+      <div class="meal-name">Work Meal B</div>
+      <ul class="meal-items">
+        <li>Greek yogurt (full fat, plain) + honey</li>
+        <li>Handful almonds or mixed nuts</li>
+        <li>Apple or orange</li>
+        <li>Hard boiled eggs x2</li>
+      </ul>
+      <div class="macro-bar">
+        <div class="macro">Cal: <span>420</span></div>
+        <div class="macro">Pro: <span>28g</span></div>
+        <div class="macro">Carb: <span>38g</span></div>
+      </div>
+    </div>
 
-<div class="meal-card">
-  <div class="meal-time">Pre-Evening Session</div>
-  <div class="meal-name">Pre-Gym (60 min before)</div>
-  <ul class="meal-items">
-    <li>1 banana + 1 scoop protein powder</li>
-    <li>OR: rice cake + peanut butter x2</li>
-    <li>16oz water</li>
-  </ul>
-  <div class="macro-bar">
-    <div class="macro">Cal: <span>280</span></div>
-    <div class="macro">Pro: <span>25g</span></div>
-    <div class="macro">Carb: <span>38g</span></div>
-  </div>
-</div>
+    <div class="meal-card">
+      <div class="meal-time">Pre-Evening Session</div>
+      <div class="meal-name">Pre-Gym (60 min before)</div>
+      <ul class="meal-items">
+        <li>1 banana + 1 scoop protein powder</li>
+        <li>OR: rice cake + peanut butter x2</li>
+        <li>16oz water</li>
+      </ul>
+      <div class="macro-bar">
+        <div class="macro">Cal: <span>280</span></div>
+        <div class="macro">Pro: <span>25g</span></div>
+        <div class="macro">Carb: <span>38g</span></div>
+      </div>
+    </div>
 
-<div class="meal-card">
-  <div class="meal-time">8:00–9:00 PM · Post-Session</div>
-  <div class="meal-name">Recovery Dinner</div>
-  <ul class="meal-items">
-    <li>8oz salmon, chicken thighs, or beef</li>
-    <li>1.5 cups sweet potato or rice</li>
-    <li>Large salad or cooked greens</li>
-    <li>Full glass water</li>
-  </ul>
-  <div class="macro-bar">
-    <div class="macro">Cal: <span>680</span></div>
-    <div class="macro">Pro: <span>52g</span></div>
-    <div class="macro">Carb: <span>72g</span></div>
-  </div>
-</div>
-```
-
+    <div class="meal-card">
+      <div class="meal-time">8:00–9:00 PM · Post-Session</div>
+      <div class="meal-name">Recovery Dinner</div>
+      <ul class="meal-items">
+        <li>8oz salmon, chicken thighs, or beef</li>
+        <li>1.5 cups sweet potato or rice</li>
+        <li>Large salad or cooked greens</li>
+        <li>Full glass water</li>
+      </ul>
+      <div class="macro-bar">
+        <div class="macro">Cal: <span>680</span></div>
+        <div class="macro">Pro: <span>52g</span></div>
+        <div class="macro">Carb: <span>72g</span></div>
+      </div>
+    </div>
   </div>
 
   <div class="callout gold" style="margin-top:24px;">
@@ -1516,7 +1497,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ MENTAL ══════════ -->
-
 <section id="mental">
   <div class="section-label">Psychological System</div>
   <h2>Mental Conditioning</h2>
@@ -1574,7 +1554,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ RECOVERY ══════════ -->
-
 <section id="recovery">
   <div class="section-label">Adaptation System</div>
   <h2>Recovery Protocols</h2>
@@ -1593,78 +1572,74 @@ transform: translateY(0);
       </ul>
     </div>
 
-```
-<div class="recovery-card">
-  <div class="recovery-icon">🧊</div>
-  <h4>Contrast Therapy</h4>
-  <p style="color:var(--smoke);font-size:13px;">Post off-day sessions. 3 minutes hot shower → 60 seconds cold. Repeat x3. Drives blood circulation and accelerates muscle recovery.</p>
-  <ul class="meal-items" style="margin-top:12px;">
-    <li>Hot (as hot as tolerable)</li>
-    <li>Cold (as cold as tolerable)</li>
-    <li>3 cycles minimum</li>
-    <li>Always end on cold</li>
-    <li>Available: ice bucket for feet/calves</li>
-  </ul>
-</div>
+    <div class="recovery-card">
+      <div class="recovery-icon">🧊</div>
+      <h4>Contrast Therapy</h4>
+      <p style="color:var(--smoke);font-size:13px;">Post off-day sessions. 3 minutes hot shower → 60 seconds cold. Repeat x3. Drives blood circulation and accelerates muscle recovery.</p>
+      <ul class="meal-items" style="margin-top:12px;">
+        <li>Hot (as hot as tolerable)</li>
+        <li>Cold (as cold as tolerable)</li>
+        <li>3 cycles minimum</li>
+        <li>Always end on cold</li>
+        <li>Available: ice bucket for feet/calves</li>
+      </ul>
+    </div>
 
-<div class="recovery-card">
-  <div class="recovery-icon">🔁</div>
-  <h4>Active Recovery</h4>
-  <p style="color:var(--smoke);font-size:13px;">Friday (off day 2) is your active recovery day. Light movement only. No intensity.</p>
-  <ul class="meal-items" style="margin-top:12px;">
-    <li>30 min walk or light jog</li>
-    <li>20 min full-body stretching</li>
-    <li>Foam roll: calves, quads, lats, thoracic</li>
-    <li>No heavy bag, no sprints</li>
-    <li>Shadowbox 10 min max (loose, fluid)</li>
-  </ul>
-</div>
+    <div class="recovery-card">
+      <div class="recovery-icon">🔁</div>
+      <h4>Active Recovery</h4>
+      <p style="color:var(--smoke);font-size:13px;">Friday (off day 2) is your active recovery day. Light movement only. No intensity.</p>
+      <ul class="meal-items" style="margin-top:12px;">
+        <li>30 min walk or light jog</li>
+        <li>20 min full-body stretching</li>
+        <li>Foam roll: calves, quads, lats, thoracic</li>
+        <li>No heavy bag, no sprints</li>
+        <li>Shadowbox 10 min max (loose, fluid)</li>
+      </ul>
+    </div>
 
-<div class="recovery-card">
-  <div class="recovery-icon">🤸</div>
-  <h4>Nightly Stretch Routine</h4>
-  <p style="color:var(--smoke);font-size:13px;">15 minutes every night. Non-negotiable. Flexibility = injury prevention = consistent training.</p>
-  <ul class="meal-items" style="margin-top:12px;">
-    <li>Hip flexors: 60 sec each</li>
-    <li>Hamstrings: 60 sec each</li>
-    <li>Shoulder cross-body: 45 sec</li>
-    <li>Thoracic rotation: 10 reps each side</li>
-    <li>Neck rolls: slow and controlled</li>
-  </ul>
-</div>
+    <div class="recovery-card">
+      <div class="recovery-icon">🤸</div>
+      <h4>Nightly Stretch Routine</h4>
+      <p style="color:var(--smoke);font-size:13px;">15 minutes every night. Non-negotiable. Flexibility = injury prevention = consistent training.</p>
+      <ul class="meal-items" style="margin-top:12px;">
+        <li>Hip flexors: 60 sec each</li>
+        <li>Hamstrings: 60 sec each</li>
+        <li>Shoulder cross-body: 45 sec</li>
+        <li>Thoracic rotation: 10 reps each side</li>
+        <li>Neck rolls: slow and controlled</li>
+      </ul>
+    </div>
 
-<div class="recovery-card">
-  <div class="recovery-icon">📉</div>
-  <h4>Overtraining Signals</h4>
-  <p style="color:var(--smoke);font-size:13px;">Know the line. Pushing through soreness is training. Pushing through these signals is injury.</p>
-  <ul class="meal-items" style="margin-top:12px;">
-    <li>Resting HR elevated +10 bpm</li>
-    <li>Sleep quality deteriorating</li>
-    <li>Motivation drops sharply (not laziness)</li>
-    <li>Joint pain (not muscle soreness)</li>
-    <li>→ Take an extra rest day. No hesitation.</li>
-  </ul>
-</div>
+    <div class="recovery-card">
+      <div class="recovery-icon">📉</div>
+      <h4>Overtraining Signals</h4>
+      <p style="color:var(--smoke);font-size:13px;">Know the line. Pushing through soreness is training. Pushing through these signals is injury.</p>
+      <ul class="meal-items" style="margin-top:12px;">
+        <li>Resting HR elevated +10 bpm</li>
+        <li>Sleep quality deteriorating</li>
+        <li>Motivation drops sharply (not laziness)</li>
+        <li>Joint pain (not muscle soreness)</li>
+        <li>→ Take an extra rest day. No hesitation.</li>
+      </ul>
+    </div>
 
-<div class="recovery-card">
-  <div class="recovery-icon">💊</div>
-  <h4>Supplementation</h4>
-  <p style="color:var(--smoke);font-size:13px;">Minimal. Evidence-based only. Food first.</p>
-  <ul class="meal-items" style="margin-top:12px;">
-    <li>Creatine monohydrate: 5g daily</li>
-    <li>Magnesium glycinate: 400mg nightly</li>
-    <li>Vitamin D3: 2000–4000 IU daily</li>
-    <li>Protein powder: fill gaps to hit 160g</li>
-    <li>Electrolytes: on double-session days</li>
-  </ul>
-</div>
-```
-
+    <div class="recovery-card">
+      <div class="recovery-icon">💊</div>
+      <h4>Supplementation</h4>
+      <p style="color:var(--smoke);font-size:13px;">Minimal. Evidence-based only. Food first.</p>
+      <ul class="meal-items" style="margin-top:12px;">
+        <li>Creatine monohydrate: 5g daily</li>
+        <li>Magnesium glycinate: 400mg nightly</li>
+        <li>Vitamin D3: 2000–4000 IU daily</li>
+        <li>Protein powder: fill gaps to hit 160g</li>
+        <li>Electrolytes: on double-session days</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- ══════════ BENCHMARKS ══════════ -->
-
 <section id="benchmarks">
   <div class="section-label">Progress Checkpoints</div>
   <h2>10-Day Benchmarks</h2>
@@ -1728,7 +1703,6 @@ transform: translateY(0);
 </section>
 
 <!-- ══════════ FOOTER ══════════ -->
-
 <footer>
   <div class="footer-title">Execute.</div>
   <div class="footer-sub">Green Lion Studio · 5'7 · 130 LB · 60 Days · Built Around Your Schedule</div>
@@ -1749,6 +1723,5 @@ transform: translateY(0);
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
